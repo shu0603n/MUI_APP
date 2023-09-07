@@ -134,18 +134,15 @@ const MainRoutes = {
         {
           path: 'top',
           children: [
-            
             {
               path: 'top',
               element: <TopPage />
-            },
-
+            }
           ]
         },
         {
           path: 'dashboard',
           children: [
-            
             {
               path: 'default',
               element: <DashboardDefault />

@@ -94,8 +94,6 @@ const DashboardDefault = () => {
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
 
-     
-
       {/* row 3 */}
       <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
@@ -134,8 +132,8 @@ const DashboardDefault = () => {
         </MainCard>
       </Grid>
 
-       {/* row 2 */}
-       <Grid item xs={12} md={7} lg={8}>
+      {/* row 2 */}
+      <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h5">Unique Visitor</Typography>

@@ -164,9 +164,7 @@ const TabProfile = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <MainCard title="自己紹介">
-              <Typography color="secondary">
-              こんにちは、私は鞍山ハンドガンのクリエイティブ グラフィック デザイナー兼ウェブサイトを拠点とするユーザー エクスペリエンス デザイナーで、デジタル製品を作成しています。
-              </Typography>
+              <Typography color="secondary">こんにちは、デザイナーで、デジタル製品を作成しています。</Typography>
             </MainCard>
           </Grid>
           <Grid item xs={12}>
