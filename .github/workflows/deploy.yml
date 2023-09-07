@@ -1,0 +1,23 @@
+name: deploy to remote
+
+on:
+  push:
+    branches:
+      - main  # プッシュをトリガーするブランチを指定
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: gulp build
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20  # 使用するNode.jsバージョンを指定
+      - run: yarn install && yarn build
+      - name: ssh key generate
+        run: echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: rsync deploy
+        run: rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./dist/* user@xs739875.xsrv.jp:/public_html/mantis/ --exclude .htaccess
