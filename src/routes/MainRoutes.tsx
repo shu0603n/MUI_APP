@@ -5,9 +5,16 @@ import MainLayout from 'layout/MainLayout';
 import CommonLayout from 'layout/CommonLayout';
 import Loadable from 'components/Loadable';
 import AuthGuard from 'utils/route-guard/AuthGuard';
+// import EmployeeList from 'pages/employee/employee-list';
+// import EmployeeDetail from 'pages/employee/employee-detail';
+// import TopPage from 'pages/top/top-page';
 
 // render - top
-const TopPage = Loadable(lazy(() => import('pages/topPage/topPage')));
+const TopPage = Loadable(lazy(() => import('pages/top/top-page')));
+
+// render - employee
+const EmployeeList = Loadable(lazy(() => import('pages/employee/employee-list')));
+const EmployeeDetail = Loadable(lazy(() => import('pages/employee/employee-detail')));
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
@@ -135,8 +142,21 @@ const MainRoutes = {
           path: 'top',
           children: [
             {
-              path: 'top',
+              path: 'top-page',
               element: <TopPage />
+            }
+          ]
+        },
+        {
+          path: 'employee',
+          children: [
+            {
+              path: 'employee-list',
+              element: <EmployeeList />
+            },
+            {
+              path: 'employee-detail',
+              element: <EmployeeDetail />
             }
           ]
         },

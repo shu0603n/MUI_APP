@@ -91,7 +91,19 @@ const Localization = () => {
                     }
                   }}
                 >
-                  <ListItemButton selected={i18n === 'en'} onClick={() => handleListItemClick('en')}>
+                  <ListItemButton selected={i18n === 'jp'} onClick={() => handleListItemClick('jp')}>
+                    <ListItemText
+                      primary={
+                        <Grid container>
+                          <Typography color="textPrimary">日本語</Typography>
+                          <Typography variant="caption" color="textSecondary" sx={{ ml: '8px' }}>
+                            (JP)
+                          </Typography>
+                        </Grid>
+                      }
+                    />
+                  </ListItemButton>
+                  <ListItemButton selected={i18n === 'fr'} onClick={() => handleListItemClick('en')}>
                     <ListItemText
                       primary={
                         <Grid container>
@@ -131,7 +143,7 @@ const Localization = () => {
                     <ListItemText
                       primary={
                         <Grid container>
-                          <Typography color="textPrimary">中国人</Typography>
+                          <Typography color="textPrimary">中国語</Typography>
                           <Typography variant="caption" color="textSecondary" sx={{ ml: '8px' }}>
                             (Chinese)
                           </Typography>
