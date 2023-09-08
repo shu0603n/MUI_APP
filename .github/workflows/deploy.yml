@@ -14,19 +14,32 @@ jobs:
       - name: Clear npm cache
         run: npm cache clean -f
   
-      - name: Setup Node.js 20
+      # - name: Setup Node.js 20.4.0
+      #   run: |
+      #     curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+      #     sudo apt-get install -y nodejs
+      #     node --version  # インストールされたNode.jsバージョンを確認
+      #     npm --version   # インストールされたnpmバージョンを確認
+          
+      # --------------------------------
+
+
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20.4.0
+
+      - name: Install dependencies and build
         run: |
-          curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-          node --version  # インストールされたNode.jsバージョンを確認
-          npm --version   # インストールされたnpmバージョンを確認
-          
-      # - name: gulp build
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     # node-version: 20
-      #     node-version: 16
-          
+          yarn install
+          yarn build
+
+
+      # --------------------------------
+
+      
       - run: yarn install && yarn build
       - name: ssh key generate
         run: |
