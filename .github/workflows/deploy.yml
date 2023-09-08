@@ -24,7 +24,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: rsync deploy (debug)
         run: |
-          ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022 -vvv 	xs739875 echo "SSH connection successful"
-          rsync -auzrvvv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./* 	xs739875:/home/xs739875/murais.net/public_html/mantis/ --exclude .htaccess
+          ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022 -vvv mantis@murais.net echo "SSH connection successful"
+          rsync -auzrvvv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./* mantis@murais.net:/ --exclude .htaccess
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
