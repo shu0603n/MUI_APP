@@ -128,7 +128,7 @@ const PricingPage = Loadable(lazy(() => import('pages/extra-pages/pricing')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
-  path: '/',
+  path: 'xs739875.xsrv.jp',
   children: [
     {
       path: '/',
