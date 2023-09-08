@@ -1,9 +1,9 @@
 name: deploy to remote
-#
+
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
