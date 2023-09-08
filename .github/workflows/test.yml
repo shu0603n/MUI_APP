@@ -1,0 +1,23 @@
+name: SSH Connection Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ssh-test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: SSH key setup
+        run: |
+          echo "$SSH_PRIVATE_KEY" > key
+          chmod 600 key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Test SSH Connection
+        run: |
+          ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022 -vvv mantis@murais.net echo "SSH connection successful"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
