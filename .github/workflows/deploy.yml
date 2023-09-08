@@ -10,17 +10,16 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node.js 20.6.0
+
+      - name: Clear npm cache
+        run: npm cache clean -f
+  
+      - name: Setup Node.js 20
         run: |
           curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
           sudo apt-get install -y nodejs
           node --version  # インストールされたNode.jsバージョンを確認
           npm --version   # インストールされたnpmバージョンを確認
-          
-      # - name: Install Node.js 20.6.0
-      #   run: |
-      #     curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-      #     sudo apt-get install -y nodejs
           
       # - name: gulp build
       #   uses: actions/setup-node@v2
