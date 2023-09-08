@@ -2,7 +2,7 @@
   "name": "mantis-react-ts",
   "version": "2.1.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "/mantis/",
   "dependencies": {
     "@ant-design/colors": "^7.0.0",
     "@ant-design/icons": "^5.0.1",
