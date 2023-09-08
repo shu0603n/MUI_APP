@@ -36,6 +36,6 @@ jobs:
       - name: rsync deploy
         run: |
           ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022 -vvv xs739875@sv14591.xserver.jp echo "SSH connection successful"
-          rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./build/* xs739875@sv14591.xserver.jp:/home/xs739875/murais.net/public_html/mantis/ --exclude .htaccess
+          rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./build/* xs739875@sv14591.xserver.jp:/home/xs739875/xs739875.xsrv.jp/public_html/ --exclude .htaccess
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
