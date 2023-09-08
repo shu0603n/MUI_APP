@@ -22,9 +22,9 @@ jobs:
           cat key  # デバッグのために秘密鍵を表示
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: rsync deploy (debug)
+      - name: rsync deploy
         run: |
           ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022 -vvv xs739875@sv14591.xserver.jp echo "SSH connection successful"
-          rsync -auzrvvv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./* xs739875@sv14591.xserver.jp:/home/xs739875/murais.net/public_html/mantis/ --exclude .htaccess
+          rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./* xs739875@sv14591.xserver.jp:/home/xs739875/murais.net/public_html/mantis/ --exclude .htaccess
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
