@@ -33,6 +33,8 @@ jobs:
 
       - name: Install dependencies and build
         run: |
+          node -version
+          npm -version
           yarn install
           yarn build
 
