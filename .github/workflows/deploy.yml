@@ -16,8 +16,15 @@ jobs:
           node-version: 20
       - run: yarn install && yarn build
       - name: ssh key generate
-        run: echo "$SSH_PRIVATE_KEY" > key && chmod 600 key
+        run: |
+          echo "$SSH_PRIVATE_KEY" > key
+          chmod 600 key
+          cat key  # デバッグのために秘密鍵を表示
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: rsync deploy
-        run: rsync -auzrv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./* mantis@murais.net:/ --exclude .htaccess
+      - name: rsync deploy (debug)
+        run: |
+          ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022 -vvv mantis@murais.net echo "SSH connection successful"
+          rsync -auzrvvv -e "ssh -i key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./* mantis@murais.net:/ --exclude .htaccess
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
