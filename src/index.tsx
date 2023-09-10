@@ -29,7 +29,7 @@ root.render(
   <ReduxProvider store={store}>
     <PersistGate loading={null} persistor={persister}>
       <ConfigProvider>
-        <BrowserRouter basename="/https://xs739875.xsrv.jp">
+        <BrowserRouter basename="/xs739875.xsrv.jp">
           <App />
         </BrowserRouter>
       </ConfigProvider>
