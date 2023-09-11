@@ -23,6 +23,7 @@ import Avatar from 'components/@extended/Avatar';
 
 // アセット
 import { EllipsisOutlined } from '@ant-design/icons';
+import SkillTable from './SkillTable';
 
 // テーブルデータ
 function createData(name: string, avatar: string, email: string, role: number, status: boolean) {
@@ -127,6 +128,9 @@ const TabRole = () => (
         <Button color="error">キャンセル</Button>
         <Button variant="contained">プロフィールを更新</Button>
       </Stack>
+    </Grid>
+    <Grid item xs={12}>
+      <SkillTable />
     </Grid>
   </Grid>
 );

@@ -54,7 +54,7 @@ const TabPassword = () => {
   };
 
   return (
-    <MainCard title="Change Password">
+    <MainCard title="パスワード変更">
       <Formik
         initialValues={{
           old: '',

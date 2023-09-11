@@ -5,7 +5,6 @@ import {
   Chip,
   Divider,
   Grid,
-  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -20,10 +19,13 @@ import {
 // project import
 import MainCard from 'components/MainCard';
 import Avatar from 'components/@extended/Avatar';
-import LinearWithLabel from 'components/@extended/progress/LinearWithLabel';
 
 // assets
-import { AimOutlined, EnvironmentOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import { AimOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import { Fragment } from 'react';
+import LinearWithLabelYear from 'components/@extended/progress/LinearWithLabelYear';
+import { PatternFormat } from 'react-number-format';
+import { calculateAge } from 'components/AgeCalculator';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -31,6 +33,66 @@ const avatarImage = require.context('assets/images/users', true);
 
 const TabProfile = () => {
   const matchDownMD = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+  const data = {
+    employee_id: 1,
+    last_name: '田中',
+    first_name: '太郎',
+    last_name_k: 'タナカ',
+    first_name_k: 'タロウ',
+    gender: '男',
+    birthday: '1994/06/03',
+    job_category_name: 'システムエンジニア',
+    client_name: '株式会社TEST',
+    project_name: '顧客管理システムの作成',
+    postal_code: '0010001',
+    address: '北海道札幌市中央区1丁目1-1',
+    joining_date: '2019/4/1',
+    retirement_date: '',
+    phone_number: '08011112222',
+    email_address: 'test@test.co.jp',
+    remarks: '手足に不自由有。',
+    employment_name: '正社員',
+    position_name: '課長'
+  };
+
+  const skill = [
+    {
+      experience_years: 15,
+      technic_name: '言語',
+      skill_name: 'JAVA'
+    },
+    {
+      experience_years: 4,
+      technic_name: '言語',
+      skill_name: 'Ptyhon'
+    },
+    {
+      experience_years: 0,
+      technic_name: '言語',
+      skill_name: 'TypeScript'
+    },
+    {
+      experience_years: 1.5,
+      technic_name: 'DataBase',
+      skill_name: 'Oracle'
+    },
+    {
+      experience_years: 5,
+      technic_name: 'DataBase',
+      skill_name: 'postgreSQL'
+    },
+    {
+      experience_years: 1.5,
+      technic_name: 'library',
+      skill_name: 'React'
+    },
+    {
+      experience_years: 10,
+      technic_name: 'library',
+      skill_name: 'Flask'
+    }
+  ];
+  console.log(data, skill);
 
   return (
     <Grid container spacing={3}>
@@ -41,13 +103,13 @@ const TabProfile = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Stack direction="row" justifyContent="flex-end">
-                    <Chip label="正社員" size="small" color="primary" />
+                    <Chip label={data.employment_name} size="small" color="primary" />
                   </Stack>
                   <Stack spacing={2.5} alignItems="center">
                     <Avatar alt="Avatar 1" size="xl" src={avatarImage(`./default.png`)} />
                     <Stack spacing={0.5} alignItems="center">
-                      <Typography variant="h5">村井俊介</Typography>
-                      <Typography color="secondary">課長</Typography>
+                      <Typography variant="h5">{`${data.last_name} ${data.first_name}`}</Typography>
+                      <Typography color="secondary">{data.position_name}</Typography>
                     </Stack>
                   </Stack>
                 </Grid>
@@ -57,13 +119,13 @@ const TabProfile = () => {
                 <Grid item xs={12}>
                   <Stack direction="row" justifyContent="space-around" alignItems="center">
                     <Stack spacing={0.5} alignItems="center">
-                      <Typography variant="h5">86</Typography>
-                      <Typography color="secondary">Post</Typography>
+                      <Typography variant="h5">{calculateAge(data.birthday)}</Typography>
+                      <Typography color="secondary">年齢</Typography>
                     </Stack>
                     <Divider orientation="vertical" flexItem />
                     <Stack spacing={0.5} alignItems="center">
-                      <Typography variant="h5">40</Typography>
-                      <Typography color="secondary">Project</Typography>
+                      <Typography variant="h5">{calculateAge(data.joining_date)}</Typography>
+                      <Typography color="secondary">勤続年数</Typography>
                     </Stack>
                     <Divider orientation="vertical" flexItem />
                     <Stack spacing={0.5} alignItems="center">
@@ -82,7 +144,7 @@ const TabProfile = () => {
                         <MailOutlined />
                       </ListItemIcon>
                       <ListItemSecondaryAction>
-                        <Typography align="right">anshan.dh81@gmail.com</Typography>
+                        <Typography align="right">{data.email_address}</Typography>
                       </ListItemSecondaryAction>
                     </ListItem>
                     <ListItem>
@@ -90,7 +152,9 @@ const TabProfile = () => {
                         <PhoneOutlined />
                       </ListItemIcon>
                       <ListItemSecondaryAction>
-                        <Typography align="right">090-8545-6584</Typography>
+                        <Typography align="right">
+                          <PatternFormat value={data.phone_number} displayType="text" type="text" format="###-####-####" />
+                        </Typography>
                       </ListItemSecondaryAction>
                     </ListItem>
                     <ListItem>
@@ -98,17 +162,7 @@ const TabProfile = () => {
                         <AimOutlined />
                       </ListItemIcon>
                       <ListItemSecondaryAction>
-                        <Typography align="right">北海道札幌市豊平区豊平7-8-5</Typography>
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                    <ListItem>
-                      <ListItemIcon>
-                        <EnvironmentOutlined />
-                      </ListItemIcon>
-                      <ListItemSecondaryAction>
-                        <Link align="right" href="https://google.com" target="_blank">
-                          https://anshan.dh.url
-                        </Link>
+                        <Typography align="right">{data.address}</Typography>
                       </ListItemSecondaryAction>
                     </ListItem>
                   </List>
@@ -119,42 +173,16 @@ const TabProfile = () => {
           <Grid item xs={12}>
             <MainCard title="Skills">
               <Grid container spacing={1.25}>
-                <Grid item xs={6}>
-                  <Typography color="secondary">JAVA</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <LinearWithLabel value={30} />
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography color="secondary">Python</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <LinearWithLabel value={80} />
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography color="secondary">TypeScript</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <LinearWithLabel value={90} />
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography color="secondary">HTML</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <LinearWithLabel value={30} />
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography color="secondary">CSS</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <LinearWithLabel value={95} />
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography color="secondary">SQL</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <LinearWithLabel value={75} />
-                </Grid>
+                {skill.map((val) => (
+                  <Fragment>
+                    <Grid item xs={6}>
+                      <Typography color="secondary">{val.skill_name}</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <LinearWithLabelYear value={val.experience_years} />
+                    </Grid>
+                  </Fragment>
+                ))}
               </Grid>
             </MainCard>
           </Grid>
@@ -163,11 +191,6 @@ const TabProfile = () => {
       <Grid item xs={12} sm={7} md={8} xl={9}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <MainCard title="自己紹介">
-              <Typography color="secondary">こんにちは、デザイナーで、デジタル製品を作成しています。</Typography>
-            </MainCard>
-          </Grid>
-          <Grid item xs={12}>
             <MainCard title="個人情報">
               <List sx={{ py: 0 }}>
                 <ListItem divider={!matchDownMD}>
@@ -175,13 +198,29 @@ const TabProfile = () => {
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
                         <Typography color="secondary">氏名</Typography>
-                        <Typography>村井 俊介</Typography>
+                        <Typography>{`${data.first_name} ${data.last_name}`}</Typography>
                       </Stack>
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
                         <Typography color="secondary">フリガナ</Typography>
-                        <Typography>ムライ シュンスケ</Typography>
+                        <Typography>{`${data.first_name_k} ${data.last_name_k}`}</Typography>
+                      </Stack>
+                    </Grid>
+                  </Grid>
+                </ListItem>
+                <ListItem divider={!matchDownMD}>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} md={6}>
+                      <Stack spacing={0.5}>
+                        <Typography color="secondary">性別</Typography>
+                        <Typography>{data.gender}</Typography>
+                      </Stack>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Stack spacing={0.5}>
+                        <Typography color="secondary">生年月日</Typography>
+                        <Typography>{data.birthday}</Typography>
                       </Stack>
                     </Grid>
                   </Grid>
@@ -192,27 +231,21 @@ const TabProfile = () => {
                       <Stack spacing={0.5}>
                         <Typography color="secondary">電話番号</Typography>
                         <Typography>
-                          090-9521-9339
-                          {/* <PatternFormat value={09095219336} displayType="text" type="text" format="### #### ####" /> */}
+                          <PatternFormat value={data.phone_number} displayType="text" type="text" format="###-####-####" />
                         </Typography>
                       </Stack>
                     </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">Country</Typography>
-                        <Typography>New York</Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                <ListItem divider={!matchDownMD}>
-                  <Grid container spacing={3}>
+
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
                         <Typography color="secondary">メールアドレス</Typography>
                         <Typography>anshan.dh81@gmail.com</Typography>
                       </Stack>
                     </Grid>
+                  </Grid>
+                </ListItem>
+                <ListItem divider={!matchDownMD}>
+                  <Grid container spacing={3}>
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
                         <Typography color="secondary">郵便番号</Typography>
@@ -231,98 +264,8 @@ const TabProfile = () => {
             </MainCard>
           </Grid>
           <Grid item xs={12}>
-            <MainCard title="学歴">
-              <List sx={{ py: 0 }}>
-                <ListItem divider>
-                  <Grid container spacing={matchDownMD ? 0.5 : 3}>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">大学</Typography>
-                        <Typography>2014-2017</Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">Institute</Typography>
-                        <Typography>-</Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                <ListItem divider>
-                  <Grid container spacing={matchDownMD ? 0.5 : 3}>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">専門学校</Typography>
-                        <Typography>2011-2013</Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">大原法律公務員専門学校</Typography>
-                        <Typography>Imperial College London</Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                <ListItem>
-                  <Grid container spacing={matchDownMD ? 0.5 : 3}>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">高等学校</Typography>
-                        <Typography>2009-2011</Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">Institute</Typography>
-                        <Typography>School of London, England</Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-              </List>
-            </MainCard>
-          </Grid>
-          <Grid item xs={12}>
-            <MainCard title="職歴">
-              <List sx={{ py: 0 }}>
-                <ListItem divider>
-                  <Grid container spacing={matchDownMD ? 0.5 : 3}>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">Senior UI/UX designer (Year)</Typography>
-                        <Typography>2019-Current</Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">Job Responsibility</Typography>
-                        <Typography>
-                          Perform task related to project manager with the 100+ team under my observation. Team management is key role in
-                          this company.
-                        </Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-                <ListItem>
-                  <Grid container spacing={matchDownMD ? 0.5 : 3}>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">Trainee cum Project Manager (Year)</Typography>
-                        <Typography>2017-2019</Typography>
-                      </Stack>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Stack spacing={0.5}>
-                        <Typography color="secondary">Job Responsibility</Typography>
-                        <Typography>Team management is key role in this company.</Typography>
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </ListItem>
-              </List>
+            <MainCard title="備考">
+              <Typography color="secondary">{data.remarks}</Typography>
             </MainCard>
           </Grid>
         </Grid>

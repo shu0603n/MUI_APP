@@ -230,7 +230,7 @@ const ClientList = () => {
         className: 'cell-center'
       },
       {
-        Header: '氏名',
+        Header: '会社名',
         accessor: 'fatherName',
         Cell: ({ row }: { row: Row }) => {
           const { values } = row;
@@ -259,9 +259,7 @@ const ClientList = () => {
       {
         Header: '電話番号',
         accessor: 'contact',
-        Cell: ({ value }: { value: number }) => (
-          <PatternFormat displayType="text" format="+1 (###) ###-####" mask="_" defaultValue={value} />
-        )
+        Cell: ({ value }: { value: number }) => <PatternFormat displayType="text" format="###-###-####" mask="_" defaultValue={value} />
       },
       {
         Header: '年齢',

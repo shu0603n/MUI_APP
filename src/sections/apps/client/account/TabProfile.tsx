@@ -24,6 +24,7 @@ import LinearWithLabel from 'components/@extended/progress/LinearWithLabel';
 
 // assets
 import { AimOutlined, EnvironmentOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import { PatternFormat } from 'react-number-format';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -41,13 +42,13 @@ const TabProfile = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Stack direction="row" justifyContent="flex-end">
-                    <Chip label="正社員" size="small" color="primary" />
+                    <Chip label="取引先" size="small" color="primary" />
                   </Stack>
                   <Stack spacing={2.5} alignItems="center">
                     <Avatar alt="Avatar 1" size="xl" src={avatarImage(`./default.png`)} />
                     <Stack spacing={0.5} alignItems="center">
-                      <Typography variant="h5">村井俊介</Typography>
-                      <Typography color="secondary">課長</Typography>
+                      <Typography variant="h5">トライブ株式会社</Typography>
+                      <Typography color="secondary">人材派遣</Typography>
                     </Stack>
                   </Stack>
                 </Grid>
@@ -58,17 +59,17 @@ const TabProfile = () => {
                   <Stack direction="row" justifyContent="space-around" alignItems="center">
                     <Stack spacing={0.5} alignItems="center">
                       <Typography variant="h5">86</Typography>
-                      <Typography color="secondary">Post</Typography>
+                      <Typography color="secondary">案件</Typography>
                     </Stack>
                     <Divider orientation="vertical" flexItem />
                     <Stack spacing={0.5} alignItems="center">
                       <Typography variant="h5">40</Typography>
-                      <Typography color="secondary">Project</Typography>
+                      <Typography color="secondary">案件</Typography>
                     </Stack>
                     <Divider orientation="vertical" flexItem />
                     <Stack spacing={0.5} alignItems="center">
                       <Typography variant="h5">4.5K</Typography>
-                      <Typography color="secondary">Members</Typography>
+                      <Typography color="secondary">派遣人数</Typography>
                     </Stack>
                   </Stack>
                 </Grid>
@@ -98,7 +99,7 @@ const TabProfile = () => {
                         <AimOutlined />
                       </ListItemIcon>
                       <ListItemSecondaryAction>
-                        <Typography align="right">北海道札幌市豊平区豊平7-8-5</Typography>
+                        <Typography align="right">北海道札幌市中央区北一条東1-4-1</Typography>
                       </ListItemSecondaryAction>
                     </ListItem>
                     <ListItem>
@@ -107,7 +108,7 @@ const TabProfile = () => {
                       </ListItemIcon>
                       <ListItemSecondaryAction>
                         <Link align="right" href="https://google.com" target="_blank">
-                          https://anshan.dh.url
+                          https://tribe-group.jp/
                         </Link>
                       </ListItemSecondaryAction>
                     </ListItem>
@@ -163,18 +164,13 @@ const TabProfile = () => {
       <Grid item xs={12} sm={7} md={8} xl={9}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <MainCard title="自己紹介">
-              <Typography color="secondary">こんにちは、デザイナーで、デジタル製品を作成しています。</Typography>
-            </MainCard>
-          </Grid>
-          <Grid item xs={12}>
-            <MainCard title="個人情報">
+            <MainCard title="企業情報">
               <List sx={{ py: 0 }}>
                 <ListItem divider={!matchDownMD}>
                   <Grid container spacing={3}>
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
-                        <Typography color="secondary">氏名</Typography>
+                        <Typography color="secondary">企業名</Typography>
                         <Typography>村井 俊介</Typography>
                       </Stack>
                     </Grid>
@@ -192,15 +188,14 @@ const TabProfile = () => {
                       <Stack spacing={0.5}>
                         <Typography color="secondary">電話番号</Typography>
                         <Typography>
-                          090-9521-9339
-                          {/* <PatternFormat value={09095219336} displayType="text" type="text" format="### #### ####" /> */}
+                          <PatternFormat value={'08011118888'} displayType="text" type="text" format="###-####-####" />
                         </Typography>
                       </Stack>
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
-                        <Typography color="secondary">Country</Typography>
-                        <Typography>New York</Typography>
+                        <Typography color="secondary">メールアドレス</Typography>
+                        <Typography>anshan.dh81@gmail.com</Typography>
                       </Stack>
                     </Grid>
                   </Grid>
@@ -209,14 +204,14 @@ const TabProfile = () => {
                   <Grid container spacing={3}>
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
-                        <Typography color="secondary">メールアドレス</Typography>
-                        <Typography>anshan.dh81@gmail.com</Typography>
+                        <Typography color="secondary">郵便番号</Typography>
+                        <Typography>062-0078</Typography>
                       </Stack>
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
-                        <Typography color="secondary">郵便番号</Typography>
-                        <Typography>062-0078</Typography>
+                        <Typography color="secondary">本社</Typography>
+                        <Typography>宮城県</Typography>
                       </Stack>
                     </Grid>
                   </Grid>
@@ -231,7 +226,7 @@ const TabProfile = () => {
             </MainCard>
           </Grid>
           <Grid item xs={12}>
-            <MainCard title="学歴">
+            <MainCard title="担当者">
               <List sx={{ py: 0 }}>
                 <ListItem divider>
                   <Grid container spacing={matchDownMD ? 0.5 : 3}>
@@ -323,6 +318,11 @@ const TabProfile = () => {
                   </Grid>
                 </ListItem>
               </List>
+            </MainCard>
+          </Grid>
+          <Grid item xs={12}>
+            <MainCard title="備考">
+              <Typography color="secondary">こんにちは、デザイナーで、デジタル製品を作成しています。</Typography>
             </MainCard>
           </Grid>
         </Grid>

@@ -196,6 +196,32 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
 // ==============================|| CUSTOMER - LIST ||============================== //
 
 const EmployeeList = () => {
+  // const [dataList, setDataList] = useState([]);
+  // const [loading, setLoading] = useState(true); // ローディング状態を管理
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:8080/');
+  //       if (!response.ok) {
+  //         throw new Error('データの取得に失敗しました');
+  //       }
+  //       const data = await response.json();
+  //       setDataList(data);
+  //       setLoading(false); // データ取得が完了したらローディングを終了
+  //     } catch (error) {
+  //       console.error('エラー:', error);
+  //       setLoading(false); // エラーが発生した場合もローディングを終了
+  //       // エラーが発生したらエラー画面を表示
+  //       return <div>ERROR...</div>; // あるいは適切なローディングコンポーネントを使用
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // console.log(dataList);
+
   const theme = useTheme();
 
   const data = useMemo(() => makeData(200), []);
@@ -225,7 +251,7 @@ const EmployeeList = () => {
         disableSortBy: true
       },
       {
-        Header: '顧客ID',
+        Header: '社員ID',
         accessor: 'id',
         className: 'cell-center'
       },
@@ -344,7 +370,10 @@ const EmployeeList = () => {
   );
 
   const renderRowSubComponent = useCallback(({ row }: { row: Row<{}> }) => <CustomerView data={data[Number(row.id)]} />, [data]);
-
+  // if (loading) {
+  //   // ローディング中の場合、ローディングスピナーやメッセージを表示
+  //   return <div>Loading...</div>; // あるいは適切なローディングコンポーネントを使用
+  // }
   return (
     <MainCard content={false}>
       <ScrollX>
