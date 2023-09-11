@@ -120,7 +120,7 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
   }, [matchDownSM]);
 
   return (
-    <>
+    <Fragment>
       <TableRowSelection selected={Object.keys(selectedRowIds).length} />
       <Stack spacing={3}>
         <Stack
@@ -189,7 +189,7 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
           </TableBody>
         </Table>
       </Stack>
-    </>
+    </Fragment>
   );
 }
 

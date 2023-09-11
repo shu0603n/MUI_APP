@@ -49,8 +49,9 @@ const EmployeeDetail = () => {
         <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="account profile tab">
           <Tab label="プロフィール" component={Link} to="/employee/employee-detail/basic" icon={<UserOutlined />} iconPosition="start" />
           <Tab label="個人情報" component={Link} to="/employee/employee-detail/personal" icon={<FileTextOutlined />} iconPosition="start" />
+          <Tab label="スキル一覧" component={Link} to="/employee/employee-detail/role" icon={<TeamOutlined />} iconPosition="start" />
           <Tab
-            label="マイアカウント"
+            label="請求一覧"
             component={Link}
             to="/employee/employee-detail/my-account"
             icon={<ContainerOutlined />}
@@ -63,7 +64,6 @@ const EmployeeDetail = () => {
             icon={<LockOutlined />}
             iconPosition="start"
           />
-          <Tab label="役割" component={Link} to="/employee/employee-detail/role" icon={<TeamOutlined />} iconPosition="start" />
           <Tab label="設定" component={Link} to="/employee/employee-detail/settings" icon={<SettingOutlined />} iconPosition="start" />
         </Tabs>
       </Box>
