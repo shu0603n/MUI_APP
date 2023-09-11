@@ -239,7 +239,7 @@ const TabProfile = () => {
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
                         <Typography color="secondary">メールアドレス</Typography>
-                        <Typography>anshan.dh81@gmail.com</Typography>
+                        <Typography>{data.email_address}</Typography>
                       </Stack>
                     </Grid>
                   </Grid>
@@ -249,7 +249,9 @@ const TabProfile = () => {
                     <Grid item xs={12} md={6}>
                       <Stack spacing={0.5}>
                         <Typography color="secondary">郵便番号</Typography>
-                        <Typography>062-0078</Typography>
+                        <Typography>
+                          <PatternFormat value={data.email_address} displayType="text" type="text" format="###-####" />
+                        </Typography>
                       </Stack>
                     </Grid>
                   </Grid>
@@ -257,7 +259,7 @@ const TabProfile = () => {
                 <ListItem>
                   <Stack spacing={0.5}>
                     <Typography color="secondary">住所</Typography>
-                    <Typography>北海道札幌市豊平区豊平7-8-5</Typography>
+                    <Typography>{data.address}</Typography>
                   </Stack>
                 </ListItem>
               </List>

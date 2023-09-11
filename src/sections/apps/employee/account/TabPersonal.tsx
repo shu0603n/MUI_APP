@@ -182,7 +182,7 @@ const TabPersonal = () => {
               <Grid item xs={12} sm={6}>
                 <Stack spacing={1.25}>
                   <InputLabel htmlFor="personal-last_name_k">性（カナ）</InputLabel>
-                  <TextField fullWidth defaultValue={data.last_name_k} id="last_name_k" placeholder="last_name_k" autoFocus />
+                  <TextField fullWidth defaultValue={data.last_name_k} id="last_name_k" placeholder="last_name_k" />
                 </Stack>
               </Grid>
               <Grid item xs={12} sm={6}>
