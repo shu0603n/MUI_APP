@@ -2,23 +2,9 @@ import { useCallback, useEffect, useMemo, useState, FC, Fragment, MouseEvent } f
 
 // material-ui
 import { alpha, useTheme } from '@mui/material/styles';
-import {
-  Button,
-  Chip,
-  Dialog,
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Tooltip,
-  Typography,
-  useMediaQuery
-} from '@mui/material';
+import { Button, Dialog, Stack, Table, TableBody, TableCell, TableHead, TableRow, Tooltip, useMediaQuery } from '@mui/material';
 
 // third-party
-import { PatternFormat } from 'react-number-format';
 import {
   useFilters,
   useExpanded,
@@ -37,7 +23,6 @@ import {
 // project import
 import MainCard from 'components/MainCard';
 import ScrollX from 'components/ScrollX';
-import Avatar from 'components/@extended/Avatar';
 import IconButton from 'components/@extended/IconButton';
 import { PopupTransition } from 'components/@extended/Transitions';
 import {
@@ -49,17 +34,15 @@ import {
   TableRowSelection
 } from 'components/third-party/ReactTable';
 
-import AddCustomer from 'sections/apps/employee/AddCustomer';
-import CustomerView from 'sections/apps/employee/CustomerView';
-import AlertCustomerDelete from 'sections/apps/employee/AlertCustomerDelete';
+import AddCustomer from 'sections/apps/employee/account/skill-table/AddCustomer';
+import CustomerView from 'sections/apps/employee/account/skill-table/CustomerView';
+import AlertCustomerDelete from 'sections/apps/employee/account/skill-table/AlertCustomerDelete';
 
 import makeData from 'data/react-table';
 import { renderFilterTypes, GlobalFilter } from 'utils/react-table';
 
 // assets
 import { CloseOutlined, PlusOutlined, EyeTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
-
-const avatarImage = require.context('assets/images/users', true);
 
 // ==============================|| REACT TABLE - EDITABLE ROW ||============================== //
 
@@ -76,6 +59,7 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
   const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   const filterTypes = useMemo(() => renderFilterTypes, []);
+  console.log(filterTypes);
   const sortBy = { id: 'fatherName', desc: false };
 
   const {
@@ -194,37 +178,74 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
 }
 
 // ==============================|| CUSTOMER - LIST ||============================== //
-
-const SkillTable = () => {
-  // const [dataList, setDataList] = useState([]);
-  // const [loading, setLoading] = useState(true); // ローディング状態を管理
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:8080/');
-  //       if (!response.ok) {
-  //         throw new Error('データの取得に失敗しました');
-  //       }
-  //       const data = await response.json();
-  //       setDataList(data);
-  //       setLoading(false); // データ取得が完了したらローディングを終了
-  //     } catch (error) {
-  //       console.error('エラー:', error);
-  //       setLoading(false); // エラーが発生した場合もローディングを終了
-  //       // エラーが発生したらエラー画面を表示
-  //       return <div>ERROR...</div>; // あるいは適切なローディングコンポーネントを使用
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  // console.log(dataList);
-
+type SkillTableCoulums = {
+  id: 1;
+  firstName: string;
+  lastName: string;
+  email: string;
+  age: number;
+  role: string;
+  visits: number;
+  progress: number;
+  status: string;
+  orderStatus: string;
+  contact: string;
+  country: string;
+  address: string;
+  fatherName: string;
+  about: string;
+  avatar: number;
+  skills: string[];
+  time: string[];
+};
+const SkillTable = (skill: any) => {
   const theme = useTheme();
 
-  const data = useMemo(() => makeData(200), []);
+  const data = useMemo(() => makeData(0), []);
+  const new_data: SkillTableCoulums[] = [];
+  data.push({
+    id: 1,
+    firstName: 'Linnie',
+    lastName: 'Soldi',
+    email: '株式会社ABC',
+    age: 5,
+    role: 'Director',
+    visits: 7772,
+    progress: 53,
+    status: 'Relationship',
+    orderStatus: 'Completed',
+    contact: 'PG',
+    country: '要件定義、基本設計、詳細設計',
+    address: '1632 Lisciv Heights, Uligawugi, Trinidad & Tobago - 94723',
+    fatherName: '顧客管理システムの修正',
+    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
+    avatar: 4,
+    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
+    time: ['要件定義', '基本設計', '詳細設計']
+  } as SkillTableCoulums);
+
+  data.push({
+    id: 1,
+    firstName: 'Linnie',
+    lastName: 'Soldi',
+    email: '株式会社ネットワーキング',
+    age: 20,
+    role: 'Director',
+    visits: 7772,
+    progress: 53,
+    status: 'Relationship',
+    orderStatus: 'Completed',
+    contact: 'PG',
+    country: '詳細設計、詳細設計、単体テスト、結合テスト',
+    address: '1632 Lisciv Heights, Uligawugi, Trinidad & Tobago - 94723',
+    fatherName: '某ECサイトのフロントエンド改修',
+    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
+    avatar: 4,
+    skills: ['React', 'Typescript', 'Python', 'Flask', 'PostgreSQL', 'Ubuntu', 'docker'],
+    time: ['詳細設計', '詳細設計', '単体テスト', '結合テスト']
+  } as SkillTableCoulums);
+
+  console.log(new_data);
   const [open, setOpen] = useState<boolean>(false);
   const [customer, setCustomer] = useState<any>(null);
   const [customerDeleteId, setCustomerDeleteId] = useState<any>('');
@@ -251,27 +272,13 @@ const SkillTable = () => {
         disableSortBy: true
       },
       {
-        Header: '社員ID',
+        Header: '開始日',
         accessor: 'id',
         className: 'cell-center'
       },
       {
-        Header: '氏名',
-        accessor: 'fatherName',
-        Cell: ({ row }: { row: Row }) => {
-          const { values } = row;
-          return (
-            <Stack direction="row" spacing={1.5} alignItems="center">
-              <Avatar alt="Avatar 1" size="sm" src={avatarImage(`./avatar-${!values.avatar ? 1 : values.avatar}.png`)} />
-              <Stack spacing={0}>
-                <Typography variant="subtitle1">{values.fatherName}</Typography>
-                <Typography variant="caption" color="textSecondary">
-                  {values.email}
-                </Typography>
-              </Stack>
-            </Stack>
-          );
-        }
+        Header: 'プロジェクト名',
+        accessor: 'fatherName'
       },
       {
         Header: 'アイコン',
@@ -279,40 +286,27 @@ const SkillTable = () => {
         disableSortBy: true
       },
       {
-        Header: 'メールアドレス',
+        Header: '企業名',
         accessor: 'email'
       },
       {
-        Header: '電話番号',
-        accessor: 'contact',
-        Cell: ({ value }: { value: number }) => (
-          <PatternFormat displayType="text" format="+1 (###) ###-####" mask="_" defaultValue={value} />
-        )
+        Header: '人数',
+        accessor: 'age'
       },
       {
-        Header: '年齢',
-        accessor: 'age',
+        Header: '役割',
+        accessor: 'contact'
+      },
+      {
+        Header: 'スキル',
+        accessor: 'skills',
         className: 'cell-right'
       },
       {
-        Header: '職種',
-        accessor: 'country'
+        Header: '担当工程',
+        accessor: 'time'
       },
-      {
-        Header: '勤務状況',
-        accessor: 'status',
-        Cell: ({ value }: { value: string }) => {
-          switch (value) {
-            case 'Complicated':
-              return <Chip color="error" label="休" size="small" variant="light" />;
-            case 'Relationship':
-              return <Chip color="success" label="退勤" size="small" variant="light" />;
-            case 'Single':
-            default:
-              return <Chip color="info" label="出勤" size="small" variant="light" />;
-          }
-        }
-      },
+
       {
         Header: 'アクション',
         className: 'cell-center',

@@ -103,7 +103,7 @@ const Localization = () => {
                       }
                     />
                   </ListItemButton>
-                  <ListItemButton selected={i18n === 'fr'} onClick={() => handleListItemClick('en')}>
+                  <ListItemButton selected={i18n === 'en'} onClick={() => handleListItemClick('en')}>
                     <ListItemText
                       primary={
                         <Grid container>

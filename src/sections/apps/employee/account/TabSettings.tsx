@@ -29,12 +29,12 @@ const TabSettings = () => {
       <Grid item xs={12} sm={6}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <MainCard title="メール設定">
+            <MainCard title="管理者設定">
               <Stack spacing={2.5}>
-                <Typography variant="subtitle1">メール通知の設定</Typography>
+                <Typography variant="subtitle1">管理者権限の設定</Typography>
                 <List sx={{ p: 0, '& .MuiListItem-root': { p: 0, py: 0.25 } }}>
                   <ListItem>
-                    <ListItemText id="switch-list-label-en" primary={<Typography color="secondary">メール通知</Typography>} />
+                    <ListItemText id="switch-list-label-en" primary={<Typography color="secondary">管理者メニューを表示する</Typography>} />
                     <Switch
                       edge="end"
                       onChange={handleToggle('en')}
@@ -45,10 +45,7 @@ const TabSettings = () => {
                     />
                   </ListItem>
                   <ListItem>
-                    <ListItemText
-                      id="switch-list-label-sctp"
-                      primary={<Typography color="secondary">個人メールへのコピーを送信</Typography>}
-                    />
+                    <ListItemText id="switch-list-label-sctp" primary={<Typography color="secondary">顧客情報を表示する</Typography>} />
                     <Switch
                       edge="end"
                       onChange={handleToggle('sctp')}
@@ -94,12 +91,12 @@ const TabSettings = () => {
         </Grid>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <MainCard title="アクティビティに関連するメール">
+        <MainCard title="システム設定">
           <Stack spacing={2.5}>
-            <Typography variant="subtitle1">いつメールを送信しますか？</Typography>
+            <Typography variant="subtitle1">参照権限の設定</Typography>
             <List sx={{ p: 0, '& .MuiListItem-root': { p: 0, py: 0.25 } }}>
               <ListItem>
-                <ListItemText id="switch-list-label-email-1" primary={<Typography color="secondary">新しい通知がある場合</Typography>} />
+                <ListItemText id="switch-list-label-email-1" primary={<Typography color="secondary">社員情報を表示</Typography>} />
                 <Switch
                   edge="end"
                   onChange={handleToggle('email-1')}
@@ -110,10 +107,7 @@ const TabSettings = () => {
                 />
               </ListItem>
               <ListItem>
-                <ListItemText
-                  id="switch-list-label-email-2"
-                  primary={<Typography color="secondary">直接メッセージが送信された場合</Typography>}
-                />
+                <ListItemText id="switch-list-label-email-2" primary={<Typography color="secondary">顧客情報を表示</Typography>} />
                 <Switch
                   edge="end"
                   onChange={handleToggle('email-2')}
@@ -124,10 +118,7 @@ const TabSettings = () => {
                 />
               </ListItem>
               <ListItem>
-                <ListItemText
-                  id="switch-list-label-email-3"
-                  primary={<Typography color="secondary">誰かがあなたを接続として追加した場合</Typography>}
-                />
+                <ListItemText id="switch-list-label-email-3" primary={<Typography color="secondary">請求情報を表示</Typography>} />
                 <Switch
                   edge="end"
                   onChange={handleToggle('email-3')}
@@ -139,12 +130,12 @@ const TabSettings = () => {
               </ListItem>
             </List>
             <Divider />
-            <Typography variant="subtitle1">メールをエスカレートするタイミングは？</Typography>
+            <Typography variant="subtitle1">編集権限の設定</Typography>
             <List sx={{ p: 0, '& .MuiListItem-root': { p: 0, py: 0.25 } }}>
               <ListItem>
                 <ListItemText
                   id="switch-list-label-order-1"
-                  primary={<Typography color="secondary.light">新しい注文がある場合</Typography>}
+                  primary={<Typography color="secondary.light">社員情報の編集を許可</Typography>}
                 />
                 <Switch
                   edge="end"
@@ -157,7 +148,10 @@ const TabSettings = () => {
                 />
               </ListItem>
               <ListItem>
-                <ListItemText id="switch-list-label-order-2" primary={<Typography color="secondary.light">新しい会員承認</Typography>} />
+                <ListItemText
+                  id="switch-list-label-order-2"
+                  primary={<Typography color="secondary.light">顧客情報の編集を許可</Typography>}
+                />
                 <Switch
                   edge="end"
                   disabled
@@ -169,7 +163,7 @@ const TabSettings = () => {
                 />
               </ListItem>
               <ListItem>
-                <ListItemText id="switch-list-label-order-3" primary={<Typography color="secondary">会員登録</Typography>} />
+                <ListItemText id="switch-list-label-order-3" primary={<Typography color="secondary">請求情報の編集を許可</Typography>} />
                 <Switch
                   edge="end"
                   onChange={handleToggle('order-3')}
