@@ -52,6 +52,7 @@ const EmployeeDetail = () => {
           <Tab label="スキル一覧" component={Link} to="/employee/employee-detail/skill" icon={<TeamOutlined />} iconPosition="start" />
           <Tab
             label="請求一覧"
+            label="請求一覧"
             component={Link}
             to="/employee/employee-detail/my-account"
             icon={<ContainerOutlined />}
