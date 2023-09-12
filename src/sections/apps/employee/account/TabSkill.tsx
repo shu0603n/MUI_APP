@@ -169,7 +169,7 @@ const TabRole = () => {
         </Stack>
       </Grid>
       <Grid item xs={12}>
-        <SkillTable skill={skill} />
+        <SkillTable />
       </Grid>
     </Grid>
   );
