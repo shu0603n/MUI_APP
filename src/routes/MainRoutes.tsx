@@ -62,7 +62,7 @@ const EmployeeTabProfile = Loadable(lazy(() => import('sections/apps/employee/ac
 const EmployeeTabPersonal = Loadable(lazy(() => import('sections/apps/employee/account/TabPersonal')));
 const EmployeeTabAccount = Loadable(lazy(() => import('sections/apps/employee/account/TabAccount')));
 const EmployeeTabPassword = Loadable(lazy(() => import('sections/apps/employee/account/TabPassword')));
-const EmployeeTabRole = Loadable(lazy(() => import('sections/apps/employee/account/TabRole')));
+const EmployeeTabSkill = Loadable(lazy(() => import('sections/apps/employee/account/TabSkill')));
 const EmployeeTabSettings = Loadable(lazy(() => import('sections/apps/employee/account/TabSettings')));
 
 const ClientProfile = Loadable(lazy(() => import('pages/client/client-detail')));
@@ -244,8 +244,8 @@ const MainRoutes = {
                   element: <EmployeeTabPassword />
                 },
                 {
-                  path: 'role',
-                  element: <EmployeeTabRole />
+                  path: 'skill',
+                  element: <EmployeeTabSkill />
                 },
                 {
                   path: 'settings',
