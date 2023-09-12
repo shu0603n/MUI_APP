@@ -5,7 +5,6 @@ import {
   Grid,
   Chip,
   Divider,
-  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -25,7 +24,7 @@ import Avatar from 'components/@extended/Avatar';
 import Transitions from 'components/@extended/Transitions';
 
 // アセット
-import { EnvironmentOutlined, LinkOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import { EnvironmentOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -43,7 +42,7 @@ const CustomerView = ({ data }: any) => {
             <Grid item xs={12} sm={5} md={4} lg={4} xl={3}>
               <MainCard>
                 <Chip
-                  label={data.status}
+                  label={data.orderStatus}
                   size="small"
                   color="primary"
                   sx={{
@@ -103,7 +102,7 @@ const CustomerView = ({ data }: any) => {
                         </ListItemIcon>
                         <ListItemSecondaryAction>
                           <Typography align="right">
-                            <PatternFormat displayType="text" format="+1 (###) ###-####" mask="_" defaultValue={data.contact} />
+                            <PatternFormat displayType="text" format="###-####-####" mask="_" defaultValue={data.contact} />
                           </Typography>
                         </ListItemSecondaryAction>
                       </ListItem>
@@ -112,17 +111,7 @@ const CustomerView = ({ data }: any) => {
                           <EnvironmentOutlined />
                         </ListItemIcon>
                         <ListItemSecondaryAction>
-                          <Typography align="right">{data.country}</Typography>
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <LinkOutlined />
-                        </ListItemIcon>
-                        <ListItemSecondaryAction>
-                          <Link align="right" href="https://google.com" target="_blank">
-                            https://anshan.dh.url
-                          </Link>
+                          <Typography align="right">{data.address}</Typography>
                         </ListItemSecondaryAction>
                       </ListItem>
                     </List>
@@ -146,7 +135,7 @@ const CustomerView = ({ data }: any) => {
                           <Stack spacing={0.5}>
                             <Typography color="secondary">フリガナ</Typography>
                             <Typography>
-                              Mr. {data.firstName} {data.lastName}
+                              {data.firstName} {data.lastName}
                             </Typography>
                           </Stack>
                         </Grid>
@@ -178,8 +167,31 @@ const CustomerView = ({ data }: any) => {
                     </ListItem>
                   </List>
                 </MainCard>
-                <MainCard title="自己紹介">
-                  <Typography color="secondary">こんにちは {data.fatherName}です。</Typography>
+                <MainCard title="スキル">
+                  <Typography color="secondary">
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      alignItems="center"
+                      sx={{ mt: 1.5, flexWrap: { xs: 'wrap', sm: 'inherit' }, gap: { xs: 1, sm: 0 } }}
+                    >
+                      <Typography variant="caption">言語:</Typography>
+                      {data.skills.map((skill: string) => (
+                        <Chip key={skill} variant="outlined" label={<Typography variant="caption">{skill}</Typography>} size="small" />
+                      ))}
+                    </Stack>
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      alignItems="center"
+                      sx={{ mt: 1.5, flexWrap: { xs: 'wrap', sm: 'inherit' }, gap: { xs: 1, sm: 0 } }}
+                    >
+                      <Typography variant="caption">ライブラリ:</Typography>
+                      {data.skills.map((skill: string) => (
+                        <Chip key={skill} variant="outlined" label={<Typography variant="caption">{skill}</Typography>} size="small" />
+                      ))}
+                    </Stack>
+                  </Typography>
                 </MainCard>
               </Stack>
             </Grid>

@@ -224,7 +224,67 @@ const EmployeeList = () => {
 
   const theme = useTheme();
 
-  const data = useMemo(() => makeData(200), []);
+  const data = useMemo(() => makeData(0), []);
+  data.push({
+    id: 1,
+    firstName: 'ヤマダ',
+    lastName: 'タカシ',
+    email: 'dsghyjyjuku@gmail.com',
+    age: 29,
+    role: '課長',
+    visits: 7772,
+    progress: 53,
+    status: '0',
+    orderStatus: '正社員',
+    contact: '08023654785',
+    country: 'システムエンジニア',
+    address: '北海道千歳市1-5-9',
+    fatherName: '山田 隆',
+    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
+    avatar: 4,
+    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
+    time: 'システムエンジニア'
+  });
+  data.push({
+    id: 2,
+    firstName: 'スズキ',
+    lastName: 'ユウヤ',
+    email: 'shjghiewfwf@gmail.com',
+    age: 24,
+    role: '主任',
+    visits: 7772,
+    progress: 53,
+    status: '2',
+    orderStatus: '派遣社員',
+    contact: '09035698545',
+    country: 'コールセンター',
+    address: '北海道江別市1-5-9',
+    fatherName: '鈴木 裕也',
+    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
+    avatar: 2,
+    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
+    time: 'システムエンジニア'
+  });
+  data.push({
+    id: 3,
+    firstName: 'ナカムラ',
+    lastName: 'サオリ',
+    email: 'fdsgrhjuki@gmail.com',
+    age: 21,
+    role: '主任',
+    visits: 7772,
+    progress: 53,
+    status: '1',
+    orderStatus: 'フリーランス',
+    contact: '08054589856',
+    country: 'コールセンター',
+    address: '北海道札幌市中央区1-5-9',
+    fatherName: '中村 早織',
+    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
+    avatar: 2,
+    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
+    time: 'システムエンジニア'
+  });
   const [open, setOpen] = useState<boolean>(false);
   const [customer, setCustomer] = useState<any>(null);
   const [customerDeleteId, setCustomerDeleteId] = useState<any>('');
@@ -285,9 +345,7 @@ const EmployeeList = () => {
       {
         Header: '電話番号',
         accessor: 'contact',
-        Cell: ({ value }: { value: number }) => (
-          <PatternFormat displayType="text" format="+1 (###) ###-####" mask="_" defaultValue={value} />
-        )
+        Cell: ({ value }: { value: number }) => <PatternFormat displayType="text" format="###-####-####" mask="_" defaultValue={value} />
       },
       {
         Header: '年齢',
@@ -303,11 +361,11 @@ const EmployeeList = () => {
         accessor: 'status',
         Cell: ({ value }: { value: string }) => {
           switch (value) {
-            case 'Complicated':
+            case '0':
               return <Chip color="error" label="休" size="small" variant="light" />;
-            case 'Relationship':
+            case '1':
               return <Chip color="success" label="退勤" size="small" variant="light" />;
-            case 'Single':
+            case '2':
             default:
               return <Chip color="info" label="出勤" size="small" variant="light" />;
           }
