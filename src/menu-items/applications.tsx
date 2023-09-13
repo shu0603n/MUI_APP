@@ -112,27 +112,6 @@ const applications: NavItemType = {
         }
       ]
     },
-    {
-      id: 'profile',
-      title: <FormattedMessage id="profile" />,
-      type: 'collapse',
-      icon: icons.UserOutlined,
-      children: [
-        {
-          id: 'user-profile',
-          title: <FormattedMessage id="user-profile" />,
-          type: 'item',
-          url: '/apps/profiles/user/personal',
-          breadcrumbs: false
-        },
-        {
-          id: 'account-profile',
-          title: <FormattedMessage id="account-profile" />,
-          type: 'item',
-          url: '/apps/profiles/account/basic'
-        }
-      ]
-    },
 
     {
       id: 'e-commerce',

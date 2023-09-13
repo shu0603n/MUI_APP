@@ -26,7 +26,7 @@ const top: NavItemType = {
       id: 'top-page',
       title: <FormattedMessage id="top-page" />,
       type: 'item',
-      url: '/top/top-page',
+      url: '/top',
       icon: icons.IdcardOutlined
     }
   ]

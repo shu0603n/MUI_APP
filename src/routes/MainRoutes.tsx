@@ -157,26 +157,20 @@ const MainRoutes = {
       children: [
         {
           path: 'top',
-          children: [
-            {
-              path: 'top-page',
-              element: <TopPage />
-            }
-          ]
+          element: <TopPage />
         },
+
         {
           path: 'employee',
+          element: <EmployeeList />,
           children: [
-            {
-              path: 'employee-list',
-              element: <EmployeeList />
-            },
             {
               path: 'employee-detail',
               element: <EmployeeDetail />
             }
           ]
         },
+
         {
           path: 'client',
           children: [

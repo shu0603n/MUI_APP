@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery, Box, Button, Grid, Stack, Typography } from '@mui/material';
 
-// project import
+// プロジェクトのインポート
 import MainCard from 'components/MainCard';
 import ProfileRadialChart from './ProfileRadialChart';
 
-// assets
+// アセット
 import BackLeft from 'assets/images/profile/UserProfileBackLeft';
 import BackRight from 'assets/images/profile/UserProfileBackRight';
 
-// types
+// タイプ
 import { ThemeDirection } from 'types/config';
 
-// ==============================|| USER PROFILE - TOP CARD ||============================== //
+// ==============================|| ユーザープロフィール - トップカード ||============================== //
 
 interface Props {
   focusInput: () => void;
@@ -49,16 +49,16 @@ const ProfileCard = ({ focusInput }: Props) => {
               <ProfileRadialChart />
             </Box>
             <Stack spacing={0.75}>
-              <Typography variant="h5">Edit Your Profile</Typography>
+              <Typography variant="h5">プロフィールを編集</Typography>
               <Typography variant="body2" color="secondary">
-                Complete your profile to unlock all features
+                プロフィールが未完成です。情報管理のため必要な情報を入力してください。
               </Typography>
             </Stack>
           </Stack>
         </Grid>
         <Grid item sx={{ mx: matchDownSM ? 2 : 3, my: matchDownSM ? 1 : 0, mb: matchDownSM ? 2 : 0 }} xs={matchDownSM ? 12 : 'auto'}>
           <Button variant="contained" fullWidth={matchDownSM} component={Link} to="/apps/profiles/user/personal" onClick={focusInput}>
-            Edit Your Profile
+            プロフィールを編集
           </Button>
         </Grid>
       </Grid>

@@ -17,20 +17,28 @@ const icons = {
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
 
-const employee: NavItemType = {
+const profile: NavItemType = {
   id: 'group-employee',
-  title: <FormattedMessage id="社員情報" />,
+  title: <FormattedMessage id="profile" />,
   icon: icons.IdcardOutlined,
   type: 'group',
   children: [
     {
-      id: '社員一覧',
-      title: <FormattedMessage id="employee" />,
+      id: 'user-profile',
+      title: <FormattedMessage id="user-profile" />,
       type: 'item',
-      url: '/employee',
-      icon: icons.IdcardOutlined
+      icon: icons.UserOutlined,
+      url: '/apps/profiles/user/personal',
+      breadcrumbs: false
+    },
+    {
+      id: 'account-profile',
+      title: <FormattedMessage id="account-profile" />,
+      type: 'item',
+      icon: icons.UserOutlined,
+      url: '/apps/profiles/account/basic'
     }
   ]
 };
 
-export default employee;
+export default profile;
