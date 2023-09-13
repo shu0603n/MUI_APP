@@ -81,9 +81,51 @@ const getInitialValues = (customer: FormikValues | null) => {
   return newCustomer;
 };
 
-const role = ['PG', 'L', 'PL', 'PMM'];
+const role = ['PG', 'L', 'PL', 'PM'];
 
-const skills = ['Java', 'HTML', 'Bootstrap', 'JavaScript', 'NodeJS', 'React', 'Angular', 'CI'];
+const skills = [
+  'Java',
+  'HTML',
+  'CSS',
+  'Bootstrap',
+  'JavaScript',
+  'TypeScript',
+  'NodeJS',
+  'React',
+  'Angular',
+  'CI',
+  'C言語',
+  'C++',
+  'Java',
+  'C#',
+  'JavaScript',
+  'PHP',
+  'Ruby',
+  'TypeScript',
+  'Python',
+  'R言語',
+  'Go言語',
+  'Swift',
+  'Kotlin',
+  'Objective-C',
+  'Visual Basic',
+  'VBScript',
+  'BASIC',
+  'Google Apps Script',
+  'Haskell',
+  'Scala',
+  'Groovy',
+  'Delphi',
+  'Dart',
+  'D言語',
+  'Perl',
+  'COBOL',
+  'SQL',
+  'FORTRAN',
+  'MATLAB',
+  'Scratch'
+];
+const candidate_skills = ['Java', 'JavaScript', 'Python', 'PHP', 'TypeScript', 'C', 'C#', 'C++'];
 
 const process = ['要件定義', '基本設計', '詳細設計', '製造', '単体テスト', '結合テスト', '運用テスト', '保守'];
 
@@ -472,7 +514,7 @@ const AddCustomer = ({ customer, onCancel }: Props) => {
                           sx={{ mt: 1.5, flexWrap: { xs: 'wrap', sm: 'inherit' }, gap: { xs: 1, sm: 0 } }}
                         >
                           <Typography variant="caption">候補:</Typography>
-                          {skills
+                          {candidate_skills
                             .filter(
                               (skill: string) => formik.values.skills && !formik.values.skills.map((item) => item).includes(skill as never)
                             )
