@@ -60,7 +60,7 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
 
   const filterTypes = useMemo(() => renderFilterTypes, []);
   console.log(filterTypes);
-  const sortBy = { id: 'fatherName', desc: false };
+  const sortBy = { id: 'project_title', desc: false };
 
   const {
     getTableProps,
@@ -84,7 +84,7 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
       columns,
       data,
       filterTypes,
-      initialState: { pageIndex: 0, pageSize: 10, hiddenColumns: ['avatar', 'email'], sortBy: [sortBy] }
+      initialState: { pageIndex: 0, pageSize: 10, hiddenColumns: ['avatar', 'cliant'], sortBy: [sortBy] }
     },
     useGlobalFilter,
     useFilters,
@@ -96,9 +96,9 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
 
   useEffect(() => {
     if (matchDownSM) {
-      setHiddenColumns(['id', 'skills', 'time', 'age', 'contact', 'visits', 'email', 'status', 'avatar']);
+      setHiddenColumns(['id', 'skills', 'process_list', 'people_number', 'contact', 'visits', 'cliant', 'status', 'avatar']);
     } else {
-      setHiddenColumns(['avatar', 'email']);
+      setHiddenColumns(['avatar', 'cliant']);
     }
     // eslint-disable-next-line
   }, [matchDownSM]);
@@ -182,8 +182,8 @@ type SkillTableCoulums = {
   id: 1;
   firstName: string;
   lastName: string;
-  email: string;
-  age: number;
+  cliant: string;
+  people_number: number;
   role: string;
   visits: number;
   progress: number;
@@ -192,11 +192,11 @@ type SkillTableCoulums = {
   contact: string;
   country: string;
   address: string;
-  fatherName: string;
+  project_title: string;
   about: string;
   avatar: number;
   skills: string[];
-  time: string[];
+  process_list: string[];
 };
 const SkillTable = (skill: any) => {
   const theme = useTheme();
@@ -207,8 +207,8 @@ const SkillTable = (skill: any) => {
     id: 1,
     firstName: 'Linnie',
     lastName: 'Soldi',
-    email: '株式会社ABC',
-    age: 5,
+    cliant: '株式会社ABC',
+    people_number: 5,
     role: 'Director',
     visits: 7772,
     progress: 53,
@@ -217,19 +217,19 @@ const SkillTable = (skill: any) => {
     contact: 'PG',
     country: '要件定義、基本設計、詳細設計',
     address: '1632 Lisciv Heights, Uligawugi, Trinidad & Tobago - 94723',
-    fatherName: '顧客管理システムの修正',
+    project_title: '顧客管理システムの修正',
     about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
     avatar: 4,
     skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
-    time: ['要件定義', '基本設計', '詳細設計']
+    process_list: ['要件定義', '基本設計', '詳細設計']
   } as SkillTableCoulums);
 
   data.push({
     id: 1,
     firstName: 'Linnie',
     lastName: 'Soldi',
-    email: '株式会社ネットワーキング',
-    age: 20,
+    cliant: '株式会社ネットワーキング',
+    people_number: 20,
     role: 'Director',
     visits: 7772,
     progress: 53,
@@ -238,11 +238,11 @@ const SkillTable = (skill: any) => {
     contact: 'PG',
     country: '詳細設計、詳細設計、単体テスト、結合テスト',
     address: '1632 Lisciv Heights, Uligawugi, Trinidad & Tobago - 94723',
-    fatherName: '某ECサイトのフロントエンド改修',
+    project_title: '某ECサイトのフロントエンド改修',
     about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
     avatar: 4,
     skills: ['React', 'Typescript', 'Python', 'Flask', 'PostgreSQL', 'Ubuntu', 'docker'],
-    time: ['詳細設計', '詳細設計', '単体テスト', '結合テスト']
+    process_list: ['詳細設計', '詳細設計', '単体テスト', '結合テスト']
   } as SkillTableCoulums);
 
   console.log(new_data);
@@ -278,7 +278,7 @@ const SkillTable = (skill: any) => {
       },
       {
         Header: 'プロジェクト名',
-        accessor: 'fatherName'
+        accessor: 'project_title'
       },
       {
         Header: 'アイコン',
@@ -287,11 +287,11 @@ const SkillTable = (skill: any) => {
       },
       {
         Header: '企業名',
-        accessor: 'email'
+        accessor: 'cliant'
       },
       {
         Header: '人数',
-        accessor: 'age'
+        accessor: 'people_number'
       },
       {
         Header: '役割',
@@ -304,7 +304,7 @@ const SkillTable = (skill: any) => {
       },
       {
         Header: '担当工程',
-        accessor: 'time'
+        accessor: 'process_list'
       },
 
       {
