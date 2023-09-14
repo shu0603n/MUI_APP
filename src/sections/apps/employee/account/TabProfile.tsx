@@ -26,12 +26,14 @@ import { Fragment } from 'react';
 import LinearWithLabelYear from 'components/@extended/progress/LinearWithLabelYear';
 import { PatternFormat } from 'react-number-format';
 import { calculateAge } from 'components/AgeCalculator';
+import { useParams } from 'react-router';
 
 const avatarImage = require.context('assets/images/users', true);
 
 // ==============================|| ACCOUNT PROFILE - BASIC ||============================== //
 
 const TabProfile = () => {
+  const { id } = useParams();
   const matchDownMD = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const data = {
     employee_id: 1,
@@ -129,8 +131,8 @@ const TabProfile = () => {
                     </Stack>
                     <Divider orientation="vertical" flexItem />
                     <Stack spacing={0.5} alignItems="center">
-                      <Typography variant="h5">4.5K</Typography>
-                      <Typography color="secondary">Members</Typography>
+                      <Typography variant="h5">{id}</Typography>
+                      <Typography color="secondary">ID</Typography>
                     </Stack>
                   </Stack>
                 </Grid>
