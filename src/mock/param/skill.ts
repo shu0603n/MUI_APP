@@ -8,3 +8,5 @@ export const MockSkill2: Skill = {
   technic: '言語', //技術区分ID
   skill_name: 'Python' //スキル名
 };
+
+export const MockSkillArray = [MockSkill, MockSkill2];
