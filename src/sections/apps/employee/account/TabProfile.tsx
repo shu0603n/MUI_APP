@@ -27,6 +27,7 @@ import LinearWithLabelYear from 'components/@extended/progress/LinearWithLabelYe
 import { PatternFormat } from 'react-number-format';
 import { calculateAge } from 'components/AgeCalculator';
 import { useParams } from 'react-router';
+import { MockEmployee } from 'data/mock';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -35,66 +36,44 @@ const avatarImage = require.context('assets/images/users', true);
 const TabProfile = () => {
   const { id } = useParams();
   const matchDownMD = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
-  const data = {
-    employee_id: 1,
-    last_name: '田中',
-    first_name: '太郎',
-    last_name_k: 'タナカ',
-    first_name_k: 'タロウ',
-    gender: '男',
-    birthday: '1994/06/03',
-    job_category_name: 'システムエンジニア',
-    client_name: '株式会社TEST',
-    project_name: '顧客管理システムの作成',
-    postal_code: '0010001',
-    address: '北海道札幌市中央区1丁目1-1',
-    joining_date: '2019/4/1',
-    retirement_date: '',
-    phone_number: '08011112222',
-    email_address: 'test@test.co.jp',
-    remarks: '手足に不自由有。',
-    employment_name: '正社員',
-    position_name: '課長'
-  };
-
+  const data = MockEmployee;
   const skill = [
     {
-      experience_years: 15,
+      experienct_years: 15,
       technic_name: '言語',
       skill_name: 'JAVA'
     },
     {
-      experience_years: 4,
+      experienct_years: 4,
       technic_name: '言語',
       skill_name: 'Ptyhon'
     },
     {
-      experience_years: 0,
+      experienct_years: 0,
       technic_name: '言語',
       skill_name: 'TypeScript'
     },
     {
-      experience_years: 1.5,
+      experienct_years: 1.5,
       technic_name: 'DataBase',
       skill_name: 'Oracle'
     },
     {
-      experience_years: 5,
+      experienct_years: 5,
       technic_name: 'DataBase',
       skill_name: 'postgreSQL'
     },
     {
-      experience_years: 1.5,
+      experienct_years: 1.5,
       technic_name: 'library',
       skill_name: 'React'
     },
     {
-      experience_years: 10,
+      experienct_years: 10,
       technic_name: 'library',
       skill_name: 'Flask'
     }
   ];
-  console.log(data, skill);
 
   return (
     <Grid container spacing={3}>
@@ -181,7 +160,7 @@ const TabProfile = () => {
                       <Typography color="secondary">{val.skill_name}</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <LinearWithLabelYear value={val.experience_years} />
+                      <LinearWithLabelYear value={val.experienct_years} />
                     </Grid>
                   </Fragment>
                 ))}
@@ -252,7 +231,7 @@ const TabProfile = () => {
                       <Stack spacing={0.5}>
                         <Typography color="secondary">郵便番号</Typography>
                         <Typography>
-                          <PatternFormat value={data.email_address} displayType="text" type="text" format="###-####" />
+                          <PatternFormat value={data.postal_code} displayType="text" type="text" format="###-####" />
                         </Typography>
                       </Stack>
                     </Grid>
