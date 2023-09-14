@@ -4,7 +4,7 @@ import { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import CommonLayout from 'layout/CommonLayout';
 import Loadable from 'components/Loadable';
-import AuthGuard from 'utils/route-guard/AuthGuard';
+// import AuthGuard from 'utils/route-guard/AuthGuard';
 
 // render - top
 const TopPage = Loadable(lazy(() => import('pages/top/top-page')));
@@ -150,9 +150,9 @@ const MainRoutes = {
     {
       path: '/',
       element: (
-        <AuthGuard>
-          <MainLayout />
-        </AuthGuard>
+        // <AuthGuard>
+        <MainLayout />
+        // </AuthGuard>
       ),
       children: [
         {
@@ -218,7 +218,7 @@ const MainRoutes = {
           path: 'employee',
           children: [
             {
-              path: 'employee-detail',
+              path: 'detail/:id',
               element: <EmployeeProfile />,
               children: [
                 {
