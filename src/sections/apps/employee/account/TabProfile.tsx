@@ -27,7 +27,7 @@ import LinearWithLabelYear from 'components/@extended/progress/LinearWithLabelYe
 import { PatternFormat } from 'react-number-format';
 import { calculateAge } from 'components/AgeCalculator';
 import { useParams } from 'react-router';
-import { MockEmployee } from 'data/mock';
+import { MockEmployee } from 'mock/employee/employee';
 
 const avatarImage = require.context('assets/images/users', true);
 
