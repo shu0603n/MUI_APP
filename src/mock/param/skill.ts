@@ -1,10 +1,10 @@
 import {
   Contract,
-  EmployeeSkillHistory,
+  EmployeeSkill,
   JobCategory,
   Position,
   Project,
-  ProjectSkillHistory,
+  ProjectSkill,
   ProjectType,
   Skill,
   Technic,
@@ -110,23 +110,50 @@ export const MockSkill: Skill = {
 };
 export const MockSkill2: Skill = {
   technic: MockTechnic.technic_name, //技術区分ID
-  skill_name: 'Python' //スキル名
+  skill_name: 'PHP' //スキル名
+};
+export const MockSkill3: Skill = {
+  technic: MockTechnic.technic_name, //技術区分ID
+  skill_name: 'TypeScript' //スキル名
+};
+export const MockSkill4: Skill = {
+  technic: MockTechnic.technic_name, //技術区分ID
+  skill_name: 'JavaScript' //スキル名
+};
+export const MockSkill5: Skill = {
+  technic: MockTechnic.technic_name, //技術区分ID
+  skill_name: 'C' //スキル名
+};
+export const MockSkill6: Skill = {
+  technic: MockTechnic2.technic_name, //技術区分ID
+  skill_name: 'React' //スキル名
 };
 
-export const MockSkillAll = [MockSkill, MockSkill2];
+export const MockSkillAll = [MockSkill, MockSkill2, MockSkill3, MockSkill4, MockSkill5];
 
-export const MockEmployeeSkillHistory: EmployeeSkillHistory = {
+export const MockEmployeeSkill: EmployeeSkill = {
   skills: [MockSkill, MockSkill2]
 };
-export const MockProjectSkill: ProjectSkillHistory = {
+export const MockEmployeeSkill2: EmployeeSkill = {
+  skills: [MockSkill, MockSkill2]
+};
+export const MockProjectSkill: ProjectSkill = {
   //[案件]
   skills: [MockSkill, MockSkill2]
+};
+export const MockProjectSkill2: ProjectSkill = {
+  //[案件]
+  skills: [MockSkill3, MockSkill4]
+};
+export const MockProjectSkill3: ProjectSkill = {
+  //[案件]
+  skills: [MockSkill5, MockSkill6]
 };
 
 export const MockProject: Project = {
   //[案件]
   client_name: '株式会社テクノプロ', //顧客ID
-  project_skills: MockProjectSkill.skills, //案件スキルID
+  project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
   contract_name: MockContract.contract_name, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
@@ -136,4 +163,19 @@ export const MockProject: Project = {
   holiday: '土日祝', //休日
   project_title: 'フロントエンド改修', //案件名
   business_outline: 'Reactを使用し、某メディア媒体のテスト環境を作成する' //業務内容
+};
+
+export const MockProject2: Project = {
+  //[案件]
+  client_name: '株式会社テクノプロ', //顧客ID
+  project_skills: MockProjectSkill, //案件スキルID
+  hp_posting_flag: true, //HP掲載フラグ
+  contract_name: MockContract.contract_name, //契約区分ID
+  working_postal_code: '0010005', //就業先郵便番号
+  working_address: '北海道札幌市中央区1-5', //就業先住所
+  working_start_time: '9:00', //就業開始時刻
+  working_end_time: '18:00', //就業終了時刻
+  holiday: '土日祝', //休日
+  project_title: 'バックエンド改修', //案件名
+  business_outline: 'Flaskを使ったRestAPIの作成' //業務内容
 };
