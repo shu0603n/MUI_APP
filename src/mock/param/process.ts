@@ -19,4 +19,4 @@ export const MockProcess6: Process = {
   process_name: '結合テスト' //工程区分名
 };
 
-export const MockProcessArray: Process[] = [MockProcess, MockProcess2, MockProcess3, MockProcess4, MockProcess5, MockProcess6];
+export const MockProcessAll: Process[] = [MockProcess, MockProcess2, MockProcess3, MockProcess4, MockProcess5, MockProcess6];
