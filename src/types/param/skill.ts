@@ -12,7 +12,7 @@ export type JobCategory = {
   job_category_name: string; //職種名
 };
 
-export type EmployeeSkillHistory = {
+export type EmployeeSkill = {
   //[社員スキル履歴]
   skills: Skill[]; //スキル
 };
@@ -40,7 +40,7 @@ export type Contract = {
 export type Project = {
   //[案件]
   client_name: string; //顧客ID
-  project_skills: Skill[]; //案件スキルID
+  project_skills: ProjectSkill; //案件スキルID
   hp_posting_flag: boolean; //HP掲載フラグ
   contract_name: string; //契約区分ID
   working_postal_code: string; //就業先郵便番号
@@ -52,7 +52,7 @@ export type Project = {
   business_outline: string; //業務内容
 };
 
-export type ProjectSkillHistory = {
+export type ProjectSkill = {
   //[社員スキル履歴]
   skills: Skill[]; //スキル
 };
