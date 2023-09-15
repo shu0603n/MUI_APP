@@ -27,7 +27,8 @@ import LinearWithLabelYear from 'components/@extended/progress/LinearWithLabelYe
 import { PatternFormat } from 'react-number-format';
 import { calculateAge } from 'components/AgeCalculator';
 import { useParams } from 'react-router';
-import { MockEmployee } from 'mock/employee/employee';
+import { MockEmployeeALL } from 'mock/employee/employee';
+import { Employee } from 'types/employee/employee';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -36,7 +37,7 @@ const avatarImage = require.context('assets/images/users', true);
 const TabProfile = () => {
   const { id } = useParams();
   const matchDownMD = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
-  const data = MockEmployee;
+  const data: Employee = MockEmployeeALL[Number(id) - 1];
   const skill = [
     {
       experienct_years: 15,
