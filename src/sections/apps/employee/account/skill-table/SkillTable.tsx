@@ -194,9 +194,8 @@ const SkillTable = (skill: any) => {
   const data = useMemo(() => makeData(0), []);
   const mock = MockEmployeeSkillAll;
 
-  const new_data: SkillTableCoulums[] = [];
   mock.map((row) => {
-    data.push({
+    const newData = {
       id: 1,
       cliant: row.project.client_name,
       people_number: row.people_number,
@@ -205,32 +204,12 @@ const SkillTable = (skill: any) => {
       avatar: 4,
       skills: row.project.project_skills.skills.map((val) => val.skill_name),
       process_list: row.process_list
-    } as SkillTableCoulums);
+    } as SkillTableCoulums;
+
+    data.push(newData);
+    return newData;
   });
 
-  data.push({
-    id: 1,
-    cliant: '株式会社ABC',
-    people_number: 5,
-    contact: 'PG',
-    project_title: '顧客管理システムの修正',
-    avatar: 4,
-    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
-    process_list: ['要件定義', '基本設計', '詳細設計']
-  } as SkillTableCoulums);
-
-  data.push({
-    id: 1,
-    cliant: '株式会社ネットワーキング',
-    people_number: 20,
-    contact: 'PG',
-    project_title: '某ECサイトのフロントエンド改修',
-    avatar: 4,
-    skills: ['React', 'Typescript', 'Python', 'Flask', 'PostgreSQL', 'Ubuntu', 'docker'],
-    process_list: ['詳細設計', '詳細設計', '単体テスト', '結合テスト']
-  } as SkillTableCoulums);
-
-  console.log(new_data);
   const [open, setOpen] = useState<boolean>(false);
   const [customer, setCustomer] = useState<any>(null);
   const [customerDeleteId, setCustomerDeleteId] = useState<any>('');
