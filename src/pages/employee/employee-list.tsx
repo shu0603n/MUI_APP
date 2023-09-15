@@ -57,6 +57,8 @@ import { renderFilterTypes, GlobalFilter } from 'utils/react-table';
 
 // assets
 import { PlusOutlined, EyeTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { MockEmployeeALL } from 'mock/employee/employee';
+import { calculateAge } from 'components/AgeCalculator';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -109,7 +111,7 @@ function ReactTable({ columns, data, handleAdd, getHeaderProps }: Props) {
 
   useEffect(() => {
     if (matchDownSM) {
-      setHiddenColumns(['id', 'age', 'contact', 'visits', 'email', 'status', 'avatar', 'country']);
+      setHiddenColumns(['id', 'age', 'contact', 'email', 'status', 'avatar', 'country']);
     } else {
       setHiddenColumns(['avatar', 'email']);
     }
@@ -195,65 +197,25 @@ const EmployeeList = () => {
   const navigation = useNavigate();
 
   const data = useMemo(() => makeData(0), []);
-  data.push({
-    id: 1,
-    firstName: 'ヤマダ',
-    lastName: 'タカシ',
-    email: 'dsghyjyjuku@gmail.com',
-    age: 29,
-    role: '課長',
-    visits: 7772,
-    progress: 53,
-    status: '0',
-    orderStatus: '正社員',
-    contact: '08023654785',
-    country: 'システムエンジニア',
-    address: '北海道千歳市1-5-9',
-    fatherName: '山田 隆',
-    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
-    avatar: 4,
-    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
-    time: 'システムエンジニア'
-  });
-  data.push({
-    id: 2,
-    firstName: 'スズキ',
-    lastName: 'ユウヤ',
-    email: 'shjghiewfwf@gmail.com',
-    age: 24,
-    role: '主任',
-    visits: 7772,
-    progress: 53,
-    status: '2',
-    orderStatus: '派遣社員',
-    contact: '09035698545',
-    country: 'コールセンター',
-    address: '北海道江別市1-5-9',
-    fatherName: '鈴木 裕也',
-    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
-    avatar: 2,
-    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
-    time: 'システムエンジニア'
-  });
-  data.push({
-    id: 3,
-    firstName: 'ナカムラ',
-    lastName: 'サオリ',
-    email: 'fdsgrhjuki@gmail.com',
-    age: 21,
-    role: '主任',
-    visits: 7772,
-    progress: 53,
-    status: '1',
-    orderStatus: 'フリーランス',
-    contact: '08054589856',
-    country: 'コールセンター',
-    address: '北海道札幌市中央区1-5-9',
-    fatherName: '中村 早織',
-    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
-    avatar: 2,
-    skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
-    time: 'システムエンジニア'
+  const mock = MockEmployeeALL;
+  mock.forEach((row) => {
+    const newData = {
+      id: row.employee_id,
+      firstName: row.first_name_k,
+      lastName: row.last_name_k,
+      email: row.email_address,
+      age: calculateAge(row.birthday),
+      role: row.position_name,
+      status: '0',
+      orderStatus: row.employment_name,
+      contact: row.phone_number,
+      country: row.job_category,
+      address: row.address,
+      fatherName: row.first_name + row.last_name,
+      about: row.remarks,
+      avatar: 4
+    };
+    data.push(newData);
   });
 
   const [open, setOpen] = useState<boolean>(false);
