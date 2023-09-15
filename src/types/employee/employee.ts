@@ -1,4 +1,4 @@
-import { EmployeeSkillHistory } from 'types/param/skill';
+import { EmployeeSkillHistory } from './employee_skill';
 
 export type Employee = {
   employee_id: number; //社員ID
