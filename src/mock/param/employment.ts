@@ -16,4 +16,4 @@ export const MockEmployment5: Employment = {
   employment_name: 'フリーランス' //雇用区分名
 };
 
-export const MockEmploymentArray: Employment[] = [MockEmployment, MockEmployment2, MockEmployment3, MockEmployment4, MockEmployment5];
+export const MockEmploymentAll: Employment[] = [MockEmployment, MockEmployment2, MockEmployment3, MockEmployment4, MockEmployment5];
