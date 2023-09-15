@@ -28,7 +28,6 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 // project import
 import CustomerPreview from './CustomerPreview';
 import AlertCustomerDelete from './AlertCustomerDelete';
-import AddCustomer from 'sections/apps/customer/AddCustomer';
 import MainCard from 'components/MainCard';
 import Avatar from 'components/@extended/Avatar';
 import IconButton from 'components/@extended/IconButton';
@@ -231,9 +230,7 @@ const CustomerCard = ({ customer }: { customer: UserCardProps }) => {
         onClose={handleAdd}
         open={add}
         sx={{ '& .MuiDialog-paper': { p: 0 } }}
-      >
-        <AddCustomer customer={customer} onCancel={handleAdd} />
-      </Dialog>
+      ></Dialog>
       <CustomerPreview customer={customer} open={open} onClose={handleClose} />
       <AlertCustomerDelete title={customer.fatherName} open={openAlert} handleClose={handleAlertClose} />
     </>

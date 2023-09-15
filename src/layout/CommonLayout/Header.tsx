@@ -26,7 +26,6 @@ import {
 // project import
 import { APP_DEFAULT_PATH } from 'config';
 import IconButton from 'components/@extended/IconButton';
-import AnimateButton from 'components/@extended/AnimateButton';
 import Logo from 'components/logo';
 
 // assets
@@ -102,33 +101,11 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }: Props) => {
               spacing={2}
             >
               <Link className="header-link" color="white" component={RouterLink} to="/login" target="_blank" underline="none">
-                Dashboard
+                ログイン
               </Link>
-              <Link
-                className="header-link"
-                color={handleDrawerOpen ? 'primary' : 'white'}
-                component={RouterLink}
-                to="/components-overview/buttons"
-                underline="none"
-              >
-                Components
+              <Link className="header-link" color="white" component={RouterLink} to="/top" target="_blank" underline="none">
+                ログインせずに開く
               </Link>
-              <Link className="header-link" color="white" href="https://codedthemes.gitbook.io/mantis/" target="_blank" underline="none">
-                Documentation
-              </Link>
-              <Box sx={{ display: 'inline-block' }}>
-                <AnimateButton>
-                  <Button
-                    component={Link}
-                    href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"
-                    disableElevation
-                    color="primary"
-                    variant="contained"
-                  >
-                    Purchase Now
-                  </Button>
-                </AnimateButton>
-              </Box>
             </Stack>
             <Box
               sx={{
@@ -155,15 +132,8 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }: Props) => {
                   </Button>
                 )}
                 {layout !== 'component' && (
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="warning"
-                    component={RouterLink}
-                    to="/components-overview/buttons"
-                    sx={{ mt: 0.5, height: 28 }}
-                  >
-                    All Components
+                  <Button variant="outlined" size="small" color="warning" component={RouterLink} to="/top" sx={{ mt: 0.5, height: 28 }}>
+                    TOP
                   </Button>
                 )}
 
@@ -204,53 +174,12 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }: Props) => {
                         <ListItemText primary="ログイン" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
                       </ListItemButton>
                     </Link>
-                    <Link style={{ textDecoration: 'none' }} href="/components-overview/buttons" target="_blank">
+                    <Link style={{ textDecoration: 'none' }} href="/top" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <LineOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="All Components" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      href="https://github.com/codedthemes/mantis-free-react-admin-template"
-                      target="_blank"
-                    >
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          <LineOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Free Version" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="https://codedthemes.gitbook.io/mantis/" target="_blank">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          <LineOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Documentation" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="https://codedthemes.support-hub.io/" target="_blank">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          <LineOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Support" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"
-                      target="_blank"
-                    >
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          <LineOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Purchase Now" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                        <Chip color="primary" label="v1.0" size="small" />
+                        <ListItemText primary="ログインせずに開く" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
                       </ListItemButton>
                     </Link>
                   </List>
