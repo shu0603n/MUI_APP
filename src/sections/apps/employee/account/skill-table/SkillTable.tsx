@@ -43,6 +43,7 @@ import { renderFilterTypes, GlobalFilter } from 'utils/react-table';
 
 // assets
 import { CloseOutlined, PlusOutlined, EyeTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { MockEmployeeSkillAll } from 'mock/employee/employee_skill';
 
 // ==============================|| REACT TABLE - EDITABLE ROW ||============================== //
 
@@ -96,7 +97,6 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
 
   useEffect(() => {
     if (matchDownSM) {
-      setHiddenColumns(['id', 'skills', 'process_list', 'people_number', 'contact', 'visits', 'cliant', 'status', 'avatar']);
     } else {
       setHiddenColumns(['avatar', 'cliant']);
     }
@@ -180,20 +180,10 @@ function ReactTable({ columns, data, renderRowSubComponent, handleAdd, getHeader
 // ==============================|| CUSTOMER - LIST ||============================== //
 type SkillTableCoulums = {
   id: 1;
-  firstName: string;
-  lastName: string;
   cliant: string;
   people_number: number;
-  role: string;
-  visits: number;
-  progress: number;
-  status: string;
-  orderStatus: string;
   contact: string;
-  country: string;
-  address: string;
   project_title: string;
-  about: string;
   avatar: number;
   skills: string[];
   process_list: string[];
@@ -202,23 +192,28 @@ const SkillTable = (skill: any) => {
   const theme = useTheme();
 
   const data = useMemo(() => makeData(0), []);
+  const mock = MockEmployeeSkillAll;
+
   const new_data: SkillTableCoulums[] = [];
+  mock.map((row) => {
+    data.push({
+      id: 1,
+      cliant: row.project.client_name,
+      people_number: row.people_number,
+      contact: row.contact,
+      project_title: row.project.project_title,
+      avatar: 4,
+      skills: row.project.project_skills.skills.map((val) => val.skill_name),
+      process_list: row.process_list
+    } as SkillTableCoulums);
+  });
+
   data.push({
     id: 1,
-    firstName: 'Linnie',
-    lastName: 'Soldi',
     cliant: '株式会社ABC',
     people_number: 5,
-    role: 'Director',
-    visits: 7772,
-    progress: 53,
-    status: 'Relationship',
-    orderStatus: 'Completed',
     contact: 'PG',
-    country: '要件定義、基本設計、詳細設計',
-    address: '1632 Lisciv Heights, Uligawugi, Trinidad & Tobago - 94723',
     project_title: '顧客管理システムの修正',
-    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
     avatar: 4,
     skills: ['ES6', 'Javascript', 'UI Design', 'React', 'Web App'],
     process_list: ['要件定義', '基本設計', '詳細設計']
@@ -226,20 +221,10 @@ const SkillTable = (skill: any) => {
 
   data.push({
     id: 1,
-    firstName: 'Linnie',
-    lastName: 'Soldi',
     cliant: '株式会社ネットワーキング',
     people_number: 20,
-    role: 'Director',
-    visits: 7772,
-    progress: 53,
-    status: 'Relationship',
-    orderStatus: 'Completed',
     contact: 'PG',
-    country: '詳細設計、詳細設計、単体テスト、結合テスト',
-    address: '1632 Lisciv Heights, Uligawugi, Trinidad & Tobago - 94723',
     project_title: '某ECサイトのフロントエンド改修',
-    about: 'Bis pomozfo ar alo me fudtotka rah nuljal gegaseg gijvaruf pemjemu uzewoltif pi ohimu okes toren ahhoj gihka.',
     avatar: 4,
     skills: ['React', 'Typescript', 'Python', 'Flask', 'PostgreSQL', 'Ubuntu', 'docker'],
     process_list: ['詳細設計', '詳細設計', '単体テスト', '結合テスト']
