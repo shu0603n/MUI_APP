@@ -1,7 +1,9 @@
 import { MockEmployment } from 'mock/param/employment';
-import { MockJobCategory, MockPosition3, MockPosition5, MockProject } from 'mock/param/skill';
+import { MockJobCategory } from 'mock/param/job_category';
+import { MockPosition3, MockPosition5 } from 'mock/param/position';
+import { MockProject, MockProject2, MockProject3, MockProject4 } from 'mock/project/project';
 import { Employee } from 'types/employee/employee';
-import { MockEmployeeSkill } from './employee_skill';
+import { MockEmployeeSkill, MockEmployeeSkill2, MockEmployeeSkill3, MockEmployeeSkill4 } from './employee_skill_history';
 
 export const MockEmployee: Employee = {
   employee_id: 1, //社員ID
@@ -35,13 +37,13 @@ export const MockEmployee2: Employee = {
   birthday: '1999/02/10', //生年月日
   job_category: MockJobCategory.job_category_name, //職種
   client_name: '株式会社フィーリスト', //顧客ID
-  project_name: MockProject.project_title, //案件
+  project_name: MockProject2.project_title, //案件
   address: '北海道札幌市豊平区', //住所
   joining_date: '1994/06/03', //入社日
   retirement_date: '1994/06/03', //退職日
   phone_number: '09095219336', //電話番号
   email_address: 'shu0603n@gmail.com', //メールアドレス
-  employee_skills: MockEmployeeSkill, //社員スキルID
+  employee_skills: MockEmployeeSkill2, //社員スキルID
   postal_code: '0620907', //郵便番号
   remarks: 'ストレスに弱い', //備考
   position_name: MockPosition5.position_name, //役職ID
@@ -57,13 +59,13 @@ export const MockEmployee3: Employee = {
   birthday: '1994/06/01', //生年月日
   job_category: MockJobCategory.job_category_name, //職種
   client_name: '株式会社トライブ', //顧客ID
-  project_name: MockProject.project_title, //案件
+  project_name: MockProject3.project_title, //案件
   address: '北海道札幌市豊平区', //住所
   joining_date: '1994/06/03', //入社日
   retirement_date: '1994/06/03', //退職日
   phone_number: '09095219336', //電話番号
   email_address: 'shu0603n@gmail.com', //メールアドレス
-  employee_skills: MockEmployeeSkill, //社員スキルID
+  employee_skills: MockEmployeeSkill3, //社員スキルID
   postal_code: '0620907', //郵便番号
   remarks: 'ストレスに弱い', //備考
   position_name: MockPosition3.position_name, //役職ID
@@ -79,13 +81,13 @@ export const MockEmployee4: Employee = {
   birthday: '1994/06/03', //生年月日
   job_category: MockJobCategory.job_category_name, //職種
   client_name: '株式会社テクノプロ', //顧客ID
-  project_name: MockProject.project_title, //案件
+  project_name: MockProject4.project_title, //案件
   address: '北海道札幌市豊平区', //住所
   joining_date: '1994/06/03', //入社日
   retirement_date: '1994/06/03', //退職日
   phone_number: '09095219336', //電話番号
   email_address: 'shu0603n@gmail.com', //メールアドレス
-  employee_skills: MockEmployeeSkill, //社員スキルID
+  employee_skills: MockEmployeeSkill4, //社員スキルID
   postal_code: '0620907', //郵便番号
   remarks: 'ストレスに弱い', //備考
   position_name: MockPosition3.position_name, //役職ID

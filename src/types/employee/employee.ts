@@ -1,4 +1,4 @@
-import { EmployeeSkillHistory } from './employee_skill';
+import { EmployeeSkillHistory } from './employee_skill_history';
 
 export type Employee = {
   employee_id: number; //社員ID

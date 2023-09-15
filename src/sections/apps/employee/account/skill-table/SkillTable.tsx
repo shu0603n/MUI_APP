@@ -43,7 +43,7 @@ import { renderFilterTypes, GlobalFilter } from 'utils/react-table';
 
 // assets
 import { CloseOutlined, PlusOutlined, EyeTwoTone, EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
-import { MockEmployeeSkillAll } from 'mock/employee/employee_skill';
+import { MockEmployeeSkillAll } from 'mock/employee/employee_skill_history';
 
 // ==============================|| REACT TABLE - EDITABLE ROW ||============================== //
 
