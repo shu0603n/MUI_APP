@@ -19,6 +19,9 @@ import { CameraOutlined } from '@ant-design/icons';
 
 // types
 import { ThemeMode } from 'types/config';
+import { MockEmployeeALL } from 'mock/employee/employee';
+import { useParams } from 'react-router';
+import { Employee } from 'types/employee/employee';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -45,6 +48,9 @@ const TabPersonal = () => {
       setAvatar(URL.createObjectURL(selectedImage));
     }
   }, [selectedImage]);
+  const { id } = useParams();
+  const mock: Employee = MockEmployeeALL[Number(id) - 1];
+  console.log(mock);
 
   const data = {
     employee_id: 1,
