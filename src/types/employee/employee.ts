@@ -1,4 +1,4 @@
-import { EmployeeSkill } from './employee_skill';
+import { EmployeeSkillHistory } from 'types/param/skill';
 
 export type Employee = {
   employee_id: number; //社員ID
@@ -16,7 +16,7 @@ export type Employee = {
   retirement_date: string; //退職日
   phone_number: string; //電話番号
   email_address: string; //メールアドレス
-  employee_skills: EmployeeSkill[]; //社員スキルID
+  employee_skills: EmployeeSkillHistory; //社員スキルID
   postal_code: string; //郵便番号
   remarks: string; //備考
   position_name: string; //役職
