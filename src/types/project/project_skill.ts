@@ -2,5 +2,6 @@ import { Skill } from 'types/param/skill';
 
 export type ProjectSkill = {
   //[社員スキル履歴]
-  skills: Skill[]; //スキル
+  project_skill_id: number;
+  project_skills: Skill[]; //スキル
 };

@@ -3,13 +3,16 @@ import { ProjectSkill } from 'types/project/project_skill';
 
 export const MockProjectSkill: ProjectSkill = {
   //[案件]
-  skills: [MockSkill, MockSkill2]
+  project_skill_id: 1,
+  project_skills: [MockSkill, MockSkill2]
 };
 export const MockProjectSkill2: ProjectSkill = {
   //[案件]
-  skills: [MockSkill3, MockSkill4]
+  project_skill_id: 2,
+  project_skills: [MockSkill3, MockSkill4]
 };
 export const MockProjectSkill3: ProjectSkill = {
   //[案件]
-  skills: [MockSkill5, MockSkill6]
+  project_skill_id: 3,
+  project_skills: [MockSkill5, MockSkill6]
 };

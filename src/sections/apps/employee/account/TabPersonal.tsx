@@ -22,6 +22,8 @@ import { ThemeMode } from 'types/config';
 import { MockEmployeeALL } from 'mock/employee/employee';
 import { useParams } from 'react-router';
 import { Employee } from 'types/employee/employee';
+import { MockPositionAll } from 'mock/param/position';
+import { MockEmploymentAll } from 'mock/param/employment';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -50,77 +52,15 @@ const TabPersonal = () => {
   }, [selectedImage]);
   const { id } = useParams();
   const mock: Employee = MockEmployeeALL[Number(id) - 1];
-  console.log(mock);
+  const mockPositionAll = MockPositionAll;
+  const mockEmploymentAll = MockEmploymentAll;
 
-  const data = {
-    employee_id: 1,
-    last_name: '田中',
-    first_name: '太郎',
-    last_name_k: 'タナカ',
-    first_name_k: 'タロウ',
-    gender: '男',
-    birthday: '1994/06/03',
-    job_category_name: 'システムエンジニア',
-    client_name: '株式会社TEST',
-    project_name: '顧客管理システムの作成',
-    postal_code: '0010001',
-    address: '北海道札幌市中央区1丁目1-1',
-    joining_date: '2019/4/1',
-    retirement_date: '',
-    phone_number: '08011112222',
-    email_address: 'test@test.co.jp',
-    remarks: '手足に不自由有。',
-    employment_name: '0',
-    position_id: '3'
-  };
-
-  const skill = [
-    {
-      experience_years: 1.5,
-      technic_name: '言語',
-      skill_name: 'JAVA'
-    },
-    {
-      experience_years: 1.5,
-      technic_name: '言語',
-      skill_name: 'Ptyhon'
-    },
-    {
-      experience_years: 1.5,
-      technic_name: '言語',
-      skill_name: 'TypeScript'
-    },
-    {
-      experience_years: 1.5,
-      technic_name: 'DataBase',
-      skill_name: 'Oracle'
-    },
-    {
-      experience_years: 1.5,
-      technic_name: 'DataBase',
-      skill_name: 'postgreSQL'
-    },
-    {
-      experience_years: 1.5,
-      technic_name: 'library',
-      skill_name: 'React'
-    },
-    {
-      experience_years: 1.5,
-      technic_name: 'library',
-      skill_name: 'Flask'
-    }
-  ];
-  console.log(skill);
-
-  const [birthday, setBirthday] = useState<Date | null>(new Date(data.birthday));
-  const [gender, setGender] = useState(data.gender);
+  const [birthday, setBirthday] = useState<Date | null>(new Date(mock.birthday));
+  const [gender, setGender] = useState(mock.gender);
 
   const handleChange = (event: SelectChangeEvent<string>) => {
     setGender(event.target.value);
   };
-
-  console.log(data);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ja}>
@@ -176,25 +116,25 @@ const TabPersonal = () => {
               <Grid item xs={12} sm={6}>
                 <Stack spacing={1.25}>
                   <InputLabel htmlFor="personal-last_name">性</InputLabel>
-                  <TextField fullWidth defaultValue={data.last_name} id="last_name" placeholder="last_name" autoFocus />
+                  <TextField fullWidth defaultValue={mock.last_name} id="last_name" placeholder="last_name" autoFocus />
                 </Stack>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Stack spacing={1.25}>
                   <InputLabel htmlFor="personal-first_name">名</InputLabel>
-                  <TextField fullWidth defaultValue={data.first_name} id="first_name" placeholder="first_name" />
+                  <TextField fullWidth defaultValue={mock.first_name} id="first_name" placeholder="first_name" />
                 </Stack>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Stack spacing={1.25}>
                   <InputLabel htmlFor="personal-last_name_k">性（カナ）</InputLabel>
-                  <TextField fullWidth defaultValue={data.last_name_k} id="last_name_k" placeholder="last_name_k" />
+                  <TextField fullWidth defaultValue={mock.last_name_k} id="last_name_k" placeholder="last_name_k" />
                 </Stack>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Stack spacing={1.25}>
                   <InputLabel htmlFor="personal-first_name_k">名（カナ）</InputLabel>
-                  <TextField fullWidth defaultValue={data.first_name_k} id="first_name_k" placeholder="first_name_k" />
+                  <TextField fullWidth defaultValue={mock.first_name_k} id="first_name_k" placeholder="first_name_k" />
                 </Stack>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -215,7 +155,7 @@ const TabPersonal = () => {
               <Grid item xs={12}>
                 <Stack spacing={1.25}>
                   <InputLabel htmlFor="personal-remarks">備考</InputLabel>
-                  <TextField fullWidth multiline rows={3} defaultValue={data.remarks} id="personal-remarks" placeholder="remarks" />
+                  <TextField fullWidth multiline rows={3} defaultValue={mock.remarks} id="personal-remarks" placeholder="remarks" />
                 </Stack>
               </Grid>
             </Grid>
@@ -236,7 +176,7 @@ const TabPersonal = () => {
                           fullWidth
                           customInput={TextField}
                           placeholder="phone_number"
-                          defaultValue={data.phone_number}
+                          defaultValue={mock.phone_number}
                           onBlur={() => {}}
                           onChange={() => {}}
                         />
@@ -249,7 +189,7 @@ const TabPersonal = () => {
                       <TextField
                         type="email"
                         fullWidth
-                        defaultValue={data.email_address}
+                        defaultValue={mock.email_address}
                         id="personal-email_address"
                         placeholder="email_address"
                       />
@@ -264,7 +204,7 @@ const TabPersonal = () => {
                         fullWidth
                         customInput={TextField}
                         placeholder="postal_code"
-                        defaultValue={data.postal_code}
+                        defaultValue={mock.postal_code}
                         onBlur={() => {}}
                         onChange={() => {}}
                       />
@@ -273,7 +213,7 @@ const TabPersonal = () => {
                   <Grid item xs={12}>
                     <Stack spacing={1.25}>
                       <InputLabel htmlFor="personal-address">住所</InputLabel>
-                      <TextField fullWidth defaultValue={data.address} id="personal-address" placeholder="address" />
+                      <TextField fullWidth defaultValue={mock.address} id="personal-address" placeholder="address" />
                     </Stack>
                   </Grid>
                 </Grid>
@@ -300,14 +240,13 @@ const TabPersonal = () => {
                       <Select
                         fullWidth
                         id="personal-employment_name"
-                        value={data.employment_name}
+                        value={mock.employment.employment_id.toString()}
                         onChange={handleChange}
                         MenuProps={MenuProps}
                       >
-                        <MenuItem value="0">正社員</MenuItem>
-                        <MenuItem value="1">契約社員</MenuItem>
-                        <MenuItem value="2">派遣社員</MenuItem>
-                        <MenuItem value="3">アルバイト</MenuItem>
+                        {mockEmploymentAll.map((val) => {
+                          return <MenuItem value={val.employment_id}>{val.employment_name}</MenuItem>;
+                        })}
                       </Select>
                     </Stack>
                   </Grid>
@@ -317,21 +256,13 @@ const TabPersonal = () => {
                       <Select
                         fullWidth
                         id="personal-employment_name"
-                        value={data.position_id}
+                        value={mock.position.position_id.toString()}
                         onChange={handleChange}
                         MenuProps={MenuProps}
                       >
-                        <MenuItem value="0">なし</MenuItem>
-                        <MenuItem value="1">主任</MenuItem>
-                        <MenuItem value="2">係長</MenuItem>
-                        <MenuItem value="3">課長</MenuItem>
-                        <MenuItem value="4">課長代理</MenuItem>
-                        <MenuItem value="5">統括</MenuItem>
-                        <MenuItem value="6">部長</MenuItem>
-                        <MenuItem value="7">取締役</MenuItem>
-                        <MenuItem value="8">常務取締役</MenuItem>
-                        <MenuItem value="9">専務取締役</MenuItem>
-                        <MenuItem value="10">代表取締役</MenuItem>
+                        {mockPositionAll.map((val) => {
+                          return <MenuItem value={val.position_id}>{val.position_name}</MenuItem>;
+                        })}
                       </Select>
                     </Stack>
                   </Grid>

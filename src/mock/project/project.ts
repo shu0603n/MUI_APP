@@ -4,10 +4,11 @@ import { MockProjectSkill } from './project_skill';
 
 export const MockProject: Project = {
   //[案件]
-  client_name: '株式会社テクノプロ', //顧客ID
+  project_id: 1,
+  client: '株式会社テクノプロ', //顧客ID
   project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
-  contract_name: MockContract.contract_name, //契約区分ID
+  contract: MockContract, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
   working_address: '北海道札幌市中央区1-5', //就業先住所
   working_start_time: '9:00', //就業開始時刻
@@ -18,11 +19,12 @@ export const MockProject: Project = {
 };
 
 export const MockProject2: Project = {
+  project_id: 2,
   //[案件]
-  client_name: '株式会社トライブ', //顧客ID
+  client: '株式会社トライブ', //顧客ID
   project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
-  contract_name: MockContract.contract_name, //契約区分ID
+  contract: MockContract, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
   working_address: '北海道札幌市中央区1-5', //就業先住所
   working_start_time: '9:00', //就業開始時刻
@@ -33,11 +35,12 @@ export const MockProject2: Project = {
 };
 
 export const MockProject3: Project = {
+  project_id: 3,
   //[案件]
-  client_name: '株式会社フィーリスト', //顧客ID
+  client: '株式会社フィーリスト', //顧客ID
   project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
-  contract_name: MockContract.contract_name, //契約区分ID
+  contract: MockContract, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
   working_address: '北海道札幌市中央区1-5', //就業先住所
   working_start_time: '9:00', //就業開始時刻
@@ -48,11 +51,12 @@ export const MockProject3: Project = {
 };
 
 export const MockProject4: Project = {
+  project_id: 4,
   //[案件]
-  client_name: '株式会社トライブ', //顧客ID
+  client: '株式会社トライブ', //顧客ID
   project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
-  contract_name: MockContract.contract_name, //契約区分ID
+  contract: MockContract, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
   working_address: '北海道札幌市中央区1-5', //就業先住所
   working_start_time: '9:00', //就業開始時刻
@@ -63,11 +67,12 @@ export const MockProject4: Project = {
 };
 
 export const MockProject5: Project = {
+  project_id: 5,
   //[案件]
-  client_name: 'ほくでん情報株式会社', //顧客ID
+  client: 'ほくでん情報株式会社', //顧客ID
   project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
-  contract_name: MockContract.contract_name, //契約区分ID
+  contract: MockContract, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
   working_address: '北海道札幌市中央区1-5', //就業先住所
   working_start_time: '9:00', //就業開始時刻
@@ -77,11 +82,12 @@ export const MockProject5: Project = {
   business_outline: 'Flaskを使ったRestAPIの作成' //業務内容
 };
 export const MockProject6: Project = {
+  project_id: 6,
   //[案件]
-  client_name: '株式会社富士ソフト', //顧客ID
+  client: '株式会社富士ソフト', //顧客ID
   project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
-  contract_name: MockContract.contract_name, //契約区分ID
+  contract: MockContract, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
   working_address: '北海道札幌市中央区1-5', //就業先住所
   working_start_time: '9:00', //就業開始時刻
@@ -91,11 +97,12 @@ export const MockProject6: Project = {
   business_outline: 'Flaskを使ったRestAPIの作成' //業務内容
 };
 export const MockProject7: Project = {
+  project_id: 1,
   //[案件]
-  client_name: '株式会社SKY', //顧客ID
+  client: '株式会社SKY', //顧客ID
   project_skills: MockProjectSkill, //案件スキルID
   hp_posting_flag: true, //HP掲載フラグ
-  contract_name: MockContract.contract_name, //契約区分ID
+  contract: MockContract, //契約区分ID
   working_postal_code: '0010005', //就業先郵便番号
   working_address: '北海道札幌市中央区1-5', //就業先住所
   working_start_time: '9:00', //就業開始時刻

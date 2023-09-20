@@ -1,4 +1,8 @@
+import { Employment } from 'types/param/employment';
+import { Position } from 'types/param/position';
+import { Project } from 'types/project/project';
 import { EmployeeSkillHistory } from './employee_skill_history';
+import { JobCategory } from 'types/param/job_category';
 
 export type Employee = {
   employee_id: number; //社員ID
@@ -8,9 +12,9 @@ export type Employee = {
   first_name_k: string; //名カナ
   gender: string; //性別
   birthday: string; //生年月日
-  job_category: string; //職種
-  client_name: string; //顧客
-  project_name: string; //案件
+  job_category: JobCategory; //職種
+  client: string; //顧客
+  project: Project; //案件
   address: string; //住所
   joining_date: string; //入社日
   retirement_date: string; //退職日
@@ -19,6 +23,6 @@ export type Employee = {
   employee_skills: EmployeeSkillHistory; //社員スキルID
   postal_code: string; //郵便番号
   remarks: string; //備考
-  position_name: string; //役職
-  employment_name: string; //雇用
+  position: Position; //役職
+  employment: Employment; //雇用
 };

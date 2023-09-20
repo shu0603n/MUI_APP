@@ -1,4 +1,7 @@
+import { Technic } from './technic';
+
 export type Skill = {
-  technic: string; //技術区分
+  skill_id: number; //スキル名
   skill_name: string; //スキル名
+  technic: Technic; //技術区分
 };

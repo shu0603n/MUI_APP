@@ -196,14 +196,14 @@ const SkillTable = (skill: any) => {
 
   mock.map((row) => {
     const newData = {
-      id: 1,
-      cliant: row.project.client_name,
+      id: row.employee_skill_history_id,
+      cliant: row.project.client,
       people_number: row.people_number,
       contact: row.contact,
       project_title: row.project.project_title,
       avatar: 4,
-      skills: row.project.project_skills.skills.map((val) => val.skill_name),
-      process_list: row.process_list
+      skills: row.project.project_skills.project_skills.map((val) => val.skill_name),
+      process_list: row.process_list.map((val) => val.process_name)
     } as SkillTableCoulums;
 
     data.push(newData);
